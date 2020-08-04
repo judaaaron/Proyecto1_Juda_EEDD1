@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Alumno.h</itemPath>
+      <itemPath>Object.h</itemPath>
+      <itemPath>Simbolo.h</itemPath>
+      <itemPath>TDA_Cola.h</itemPath>
+      <itemPath>TDA_Lista.h</itemPath>
+      <itemPath>TDA_Pila.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +18,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Alumno.cpp</itemPath>
+      <itemPath>Object.cpp</itemPath>
+      <itemPath>Simbolo.cpp</itemPath>
+      <itemPath>TDA_Cola.cpp</itemPath>
+      <itemPath>TDA_Lista.cpp</itemPath>
+      <itemPath>TDA_Pila.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +48,30 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Alumno.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Alumno.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Object.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Simbolo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Simbolo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Cola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Lista.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Lista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Pila.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Pila.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +95,30 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Alumno.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Alumno.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Object.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Simbolo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Simbolo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Cola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Lista.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Lista.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TDA_Pila.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TDA_Pila.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>

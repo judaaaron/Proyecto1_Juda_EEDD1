@@ -35,6 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Alumno.o \
+	${OBJECTDIR}/Object.o \
+	${OBJECTDIR}/Simbolo.o \
+	${OBJECTDIR}/TDA_Cola.o \
+	${OBJECTDIR}/TDA_Lista.o \
+	${OBJECTDIR}/TDA_Pila.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +67,36 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyecto1.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyecto1 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Alumno.o: Alumno.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Alumno.o Alumno.cpp
+
+${OBJECTDIR}/Object.o: Object.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Object.o Object.cpp
+
+${OBJECTDIR}/Simbolo.o: Simbolo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Simbolo.o Simbolo.cpp
+
+${OBJECTDIR}/TDA_Cola.o: TDA_Cola.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TDA_Cola.o TDA_Cola.cpp
+
+${OBJECTDIR}/TDA_Lista.o: TDA_Lista.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TDA_Lista.o TDA_Lista.cpp
+
+${OBJECTDIR}/TDA_Pila.o: TDA_Pila.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TDA_Pila.o TDA_Pila.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
