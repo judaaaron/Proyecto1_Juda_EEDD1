@@ -2,8 +2,7 @@
 #ifndef TDA_PILA_H
 #define TDA_PILA_H
 #include "Object.h"
-class TDA_Pila : public Object
-{
+class TDA_Pila{
     
 public:
     TDA_Pila();

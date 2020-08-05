@@ -3,7 +3,7 @@
 #define SIMBOLO_H
 #include "Object.h"
 
-class Simbolo : public Object 
+class Simbolo
 {
     
 public:

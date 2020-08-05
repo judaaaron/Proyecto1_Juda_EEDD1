@@ -4,8 +4,6 @@
 TDA_Lista::TDA_Lista() {
 }
 
-
-
 TDA_Lista::~TDA_Lista() {
 }
 

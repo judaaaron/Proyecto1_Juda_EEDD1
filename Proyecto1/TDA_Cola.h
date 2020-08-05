@@ -4,8 +4,7 @@
 #define TDA_COLA_H
 #include "Object.h"
 
-class TDA_Cola : public Object
-{
+class TDA_Cola{
     
 public:
     TDA_Cola();

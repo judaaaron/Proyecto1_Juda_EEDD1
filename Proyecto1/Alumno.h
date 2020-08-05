@@ -4,7 +4,7 @@
 #define ALUMNO_H
 #include "Object.h"
 
-class Alumno : public Object
+class Alumno 
 {
     
 public:

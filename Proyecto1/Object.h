@@ -8,8 +8,8 @@ using namespace std;
 
 class Object {
 public:
-    Object();
-    virtual ~Object();
+    virtual string toString()=0;
+    virtual bool equals(Object*)=0;
 private:
 
 };

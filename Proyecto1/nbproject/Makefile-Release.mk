@@ -36,6 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Alumno.o \
+	${OBJECTDIR}/ArrayList.o \
+	${OBJECTDIR}/ArrayQueue.o \
+	${OBJECTDIR}/ArrayStack.o \
+	${OBJECTDIR}/LinkedList.o \
+	${OBJECTDIR}/LinkedQueue.o \
+	${OBJECTDIR}/LinkedStack.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/Simbolo.o \
 	${OBJECTDIR}/TDA_Cola.o \
@@ -72,6 +78,36 @@ ${OBJECTDIR}/Alumno.o: Alumno.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Alumno.o Alumno.cpp
+
+${OBJECTDIR}/ArrayList.o: ArrayList.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArrayList.o ArrayList.cpp
+
+${OBJECTDIR}/ArrayQueue.o: ArrayQueue.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArrayQueue.o ArrayQueue.cpp
+
+${OBJECTDIR}/ArrayStack.o: ArrayStack.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ArrayStack.o ArrayStack.cpp
+
+${OBJECTDIR}/LinkedList.o: LinkedList.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LinkedList.o LinkedList.cpp
+
+${OBJECTDIR}/LinkedQueue.o: LinkedQueue.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LinkedQueue.o LinkedQueue.cpp
+
+${OBJECTDIR}/LinkedStack.o: LinkedStack.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LinkedStack.o LinkedStack.cpp
 
 ${OBJECTDIR}/Object.o: Object.cpp
 	${MKDIR} -p ${OBJECTDIR}
