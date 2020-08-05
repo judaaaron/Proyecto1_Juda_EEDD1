@@ -4,10 +4,14 @@
 
 using namespace std;
 
+// menus respectivos para cada TDA incluyendo el menu principal
 int menuPrincipal();
 int menuListas();
 int menuPilas();
 int menuColas();
+
+//  prototipos de las opciones para cada una de las TDA
+int opcionesListas();
 
 int main(int argc, char** argv) {
     int option=0;
@@ -17,7 +21,60 @@ int main(int argc, char** argv) {
                     int opcion=0;
                     switch(opcion=menuListas()){
                         case 1:{// opcion para trabajar con arraylist
-                            cout<<"arraylsit";
+                            int opc=0;
+                            switch(opc=opcionesListas()){
+                                case 1:{// insertar elemento 
+                                    cout<<"insertar elemento";
+                                    break;
+                                }
+                                
+                                
+                                case 2:{// imprimir elementos
+                                    
+                                    break;
+                                }
+                                
+                                case 3:{// buscar elemento
+                                    
+                                    break;
+                                }
+                                
+                                case 4:{// borrar elemento
+                                    
+                                    break;
+                                }
+                                
+                                case 5:{// ver si esta vacia                             
+                                    
+                                    break;
+                                }
+                                
+                                case 6:{// obtener elemento por posicion
+                                    
+                                    break;
+                                }
+                                
+                                case 7:{// obtener siguiente
+                                    cout<<"obteniendo siguiente";
+                                    break;
+                                }
+                                
+                                case 8:{
+                                    
+                                    break;// obtener anterior
+                                }
+                                
+                                case 9:{// borrar todos los elementos(anula)
+                                    
+                                    break;
+                                }
+                                
+                                case 10:{
+                                    
+                                    break;
+                                        }
+                        
+                            }
                             break;
                         }
                         
@@ -163,4 +220,32 @@ int menuColas(){
 	
 	return opcion; 	 
 
+}
+
+int opcionesListas(){
+     int opcion=0;
+    while(opcion < 1 || opcion > 10){
+        cout<<"      OPCIONES PARA LISTAS "<<endl
+        <<"1. Insertar elemento  "<<endl
+        <<"2. Imprimir elementos"<<endl
+        <<"3. Buscar elemento"<<endl
+        <<"4. Borrar elemento"<<endl
+        <<"5. Ver si está vacía"<<endl
+        <<"6. Obtener elemento por posición"<<endl
+        <<"7. Obtener siguiente "<<endl
+        <<"8. Obtener anterior "<<endl
+        <<"9. Borrar todos los elementos"<<endl
+        <<"10. Regresar al menu principal"<<endl
+        <<"Ingrese una opcion entre 1 y 10: ";
+        cin>>opcion;
+        cout<<endl;
+        if(opcion >= 1 && opcion <= 10)
+            break;
+        else
+            cout<<endl<<"Opcion incorrecta, elija nuevamente "<<endl;			
+	}//Fin del ciclo while
+	
+	
+	return opcion; 
+  
 }
