@@ -74,9 +74,7 @@ Object* ArrayList::recupera(int p) {
     }else{
         return NULL;
     }
-    //retornar el valor del objeto que corresponde a p en el array
-    //else
-    		
+    //retornar el valor del objeto que corresponde a p en el array	
 }
 
 Object* ArrayList::siguiente(int p) {

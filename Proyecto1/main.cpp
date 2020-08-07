@@ -297,7 +297,12 @@ void OpcionesArraylist() {
             }
 
             case 5:
-            {// ver si esta vacia                             
+            {// ver si esta vacia           
+                if(arrayList->vacia()){
+                    cout<<"En estos momentos la lista esta vacia"<<endl;
+                }else{
+                    cout<<"Hay 1 o mas elementos en la lista"<<endl;
+                }
 
                 break;
             }
