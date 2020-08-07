@@ -2,9 +2,15 @@
 
 #ifndef ALUMNO_H
 #define ALUMNO_H
+
 #include "Object.h"
 
-class Alumno 
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+class Alumno:  public Object
 {
     
 public:
@@ -14,6 +20,7 @@ public:
     string getCuenta();
     void setNombre(string);
     void setCuenta(string);
+    string toString();
     virtual ~Alumno();
 protected:
     string nombre,cuenta;

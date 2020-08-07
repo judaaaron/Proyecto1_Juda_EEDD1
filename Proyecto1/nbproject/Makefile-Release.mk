@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/LinkedList.o \
 	${OBJECTDIR}/LinkedQueue.o \
 	${OBJECTDIR}/LinkedStack.o \
+	${OBJECTDIR}/Nodo.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/Simbolo.o \
 	${OBJECTDIR}/TDA_Cola.o \
@@ -108,6 +109,11 @@ ${OBJECTDIR}/LinkedStack.o: LinkedStack.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LinkedStack.o LinkedStack.cpp
+
+${OBJECTDIR}/Nodo.o: Nodo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nodo.o Nodo.cpp
 
 ${OBJECTDIR}/Object.o: Object.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -1,6 +1,21 @@
 // main del proyecto
 #include <cstdlib>
 #include<iostream>
+#include <string>
+#include "Alumno.h"
+#include "TDA_Cola.h"
+#include "TDA_Lista.h"
+#include "TDA_Pila.h"
+#include "Object.h"
+#include "ArrayList.h"
+#include "ArrayStack.h"
+#include "ArrayQueue.h"
+#include "LinkedList.h"
+#include "LinkedStack.h"
+#include "LinkedQueue.h"
+#include "Nodo.h"
+#include "Simbolo.h"
+
 
 using namespace std;
 
@@ -27,8 +42,10 @@ void OpcionesLinkedQueue();
 
 
 int p, n; // variables goblales
-
+Object* o;
+ArrayList* arrayList = new ArrayList();
 int main(int argc, char** argv) {
+    
     mainFalso();
     return 0;
 }
@@ -124,7 +141,7 @@ int menuPrincipal() {// funcion del menu principal
                 << "2. Trabajar con Pilas" << endl
                 << "3. Trabajar con Colas" << endl
                 << "4. Salir" << endl
-                << "Ingrese una opcion entre 1 y 3: ";
+                << "Ingrese una opcion entre 1 y 4: ";
         cin>>opcion;
         cout << endl;
         if (opcion >= 1 && opcion <= 4)
@@ -229,15 +246,31 @@ int opcionesListas() {
 }
 
 void OpcionesArraylist() {
+     Alumno* alumno = NULL;
     int opc = 0;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
             case 1:
             {// insertar elemento 
+               
+                alumno = new Alumno();
                 char resp = 's';
-                while (resp == 's' || resp == 'S') {
-                    cout << "Ingrese posicion;" << endl;
-                    cin>>p;
+                while (resp == 's' || resp == 'S') {                   
+                    string nombre,cuenta;
+                    cout << "Ingrese la posicion a insertar alumno(>=0): ";
+                     cin >> p;
+                     cout<<"Ingrese nombre del alumno: ";
+                     cin>>nombre;
+                     cout<<"Ingrese # de cuenta: ";
+                     cin>>cuenta;
+                     alumno = new Alumno(nombre,cuenta);
+                     bool valido=arrayList->inserta(p, alumno);
+                     if(valido==true){
+                        cout << "Alumno " << nombre << " agregado con exito a la lista.\n"<<endl;
+                     }else{
+                         cout<<"Posicion incorrecta, lo posicion que ha ingresado esta fuera del limite de elementos en la lista"<<endl;
+                     }
+  
                     cout << "Desea insertar otro elemento? [S/N]: ";
                     cin>>resp;
                 }
@@ -271,6 +304,12 @@ void OpcionesArraylist() {
 
             case 6:
             {// obtener elemento por posicion
+                int pp;
+                cout<<"Ingrese un posicion ";
+                cin>>pp;
+              ///  alumno=arrayList->recupera(pp);
+                o=arrayList->recupera(pp);
+                cout<<o;
 
                 break;
             }
@@ -602,7 +641,6 @@ void OpcionesLinkedQueue() {
                 cout << endl;
                 break;
             }
-
 
         }
     }

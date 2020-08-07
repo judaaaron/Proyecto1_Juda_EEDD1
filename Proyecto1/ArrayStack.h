@@ -8,9 +8,10 @@ class ArrayStack : public TDA_Pila
     
 public:
     ArrayStack();
-   
     virtual ~ArrayStack();
-private:
+protected:
+    int capacity,tope;
+    Object** arrayPila;
 
 };
 

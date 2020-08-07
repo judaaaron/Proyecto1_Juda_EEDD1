@@ -11,6 +11,7 @@
       <itemPath>LinkedList.h</itemPath>
       <itemPath>LinkedQueue.h</itemPath>
       <itemPath>LinkedStack.h</itemPath>
+      <itemPath>Nodo.h</itemPath>
       <itemPath>Object.h</itemPath>
       <itemPath>Simbolo.h</itemPath>
       <itemPath>TDA_Cola.h</itemPath>
@@ -31,6 +32,7 @@
       <itemPath>LinkedList.cpp</itemPath>
       <itemPath>LinkedQueue.cpp</itemPath>
       <itemPath>LinkedStack.cpp</itemPath>
+      <itemPath>Nodo.cpp</itemPath>
       <itemPath>Object.cpp</itemPath>
       <itemPath>Simbolo.cpp</itemPath>
       <itemPath>TDA_Cola.cpp</itemPath>
@@ -87,6 +89,10 @@
       <item path="LinkedStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Nodo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Nodo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Object.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -158,6 +164,10 @@
       <item path="LinkedStack.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedStack.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Nodo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Nodo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Object.cpp" ex="false" tool="1" flavor2="0">
       </item>
