@@ -261,7 +261,7 @@ void OpcionesArraylist() {
                 char resp = 's';
                 while (resp == 's' || resp == 'S') {
 
-                    cout << "Ingrese la posicion a insertar alumno(>=0): ";
+                    cout << "Ingrese la posicion a insertar alumno: ";
                     cin >> p;
                     cout << "Ingrese nombre del alumno: ";
                     cin>>nombre;
@@ -381,7 +381,7 @@ void OpcionesArraylist() {
                     cout << arrayList->anterior(ps)->toString();
                 }
                 // o[ps]=arrayList->anterior(ps)->toString();
-
+                cout<<endl;
                 break;
             }
 
@@ -396,6 +396,7 @@ void OpcionesArraylist() {
                     if (resp == 's' || resp == 'S') {
                         arrayList->anula();
                         cout << "Los elementos han sido borrados exitosamente!" << endl;
+                        delete arrayList;
                         cout << endl;
                     } else {
                         cout << "Hubo un error al borrar los elementos de la lista." << endl;
