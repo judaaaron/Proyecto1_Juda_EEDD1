@@ -131,6 +131,8 @@ Object* ArrayList::suprime(int p) {
             this->n--;
             return retval;
         }
+    }else{
+        cout<<"Esta posicion no existe"<<endl;
     }
 }
 
@@ -148,6 +150,10 @@ int ArrayList::localiza(Object* x) {
     //si sale del ciclo y no retornó
     //return -1;
     
+}
+
+ int ArrayList:: getSize(){
+     return this->n;
 }
 
 ArrayList::~ArrayList() {

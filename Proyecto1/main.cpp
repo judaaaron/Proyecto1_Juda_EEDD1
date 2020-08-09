@@ -48,6 +48,7 @@ ArrayList* arrayList = new ArrayList();
 
 int main(int argc, char** argv) {
     mainFalso();
+    delete arrayList;
     return 0;
 }
 
@@ -289,18 +290,18 @@ void OpcionesArraylist() {
 
             case 3:
             {// buscar elemento
-                string nombre, cuenta;
-                cout << "Ingrese nombre del alumno: ";
-                cin>>nombre;
+                string cuenta;
                 cout << "Ingrese # de cuenta: ";
                 cin>>cuenta;
-                alumno = new Alumno(nombre, cuenta);
+                alumno = new Alumno(cuenta);
                 int ubicacion = arrayList->localiza(alumno);
+                 o[ubicacion] = arrayList->recupera(ubicacion);
 
                 if (ubicacion == -1) {
                     cout<<"No se encontró ningun elemento con esos datos."<<endl;
                 } else {
-                    cout << "El numero de lista para este alumno es: " << ubicacion << endl;
+                    //1 cout << o[ubicacion]->toString() << endl;
+                    cout << "El numero de lista para: "<<  o[ubicacion]->toString()<< " es: "<<ubicacion << endl;
                 }
                 cout << endl;
 
@@ -324,7 +325,13 @@ void OpcionesArraylist() {
                     cout << "En estos momentos la lista esta vacia" << endl;
                     cout << endl;
                 } else {
-                    cout << "Hay 1 o mas elementos en la lista" << endl;
+                    int elementos= arrayList->getSize();
+                    if(elementos==1){
+                        cout<<"Solo hay un elemento en la lista."<<endl;
+                    }else{
+                         cout <<"Hay: "<< elementos << " elementos en la lista" << endl;
+                    }
+                  
                     cout << endl;
                 }
                 cout << endl;

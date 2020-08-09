@@ -17,6 +17,7 @@ class Alumno:  public Object
 public:
     Alumno();
     Alumno(string,string);
+    Alumno(string);
     string getNombre();
     string getCuenta();
     void setNombre(string);

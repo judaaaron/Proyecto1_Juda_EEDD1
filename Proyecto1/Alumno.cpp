@@ -9,6 +9,10 @@ Alumno::Alumno(string name, string account) {
     this->cuenta = account;
 
 }
+Alumno::Alumno(string account) {
+    this->cuenta = account;
+
+}
 
 string Alumno::getNombre() {
     return this->nombre;
@@ -37,7 +41,7 @@ bool Alumno::equals(Object* obj) {
         return false;
     else if (typeid (*obj) == typeid (Alumno)) {
         Alumno* temp = dynamic_cast<Alumno*> (obj);
-        return temp->getNombre() == this->nombre;
+        return temp->getCuenta() == this->cuenta;
     } else {
         return false;
     }

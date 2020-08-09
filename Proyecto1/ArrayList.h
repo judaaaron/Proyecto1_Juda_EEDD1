@@ -19,6 +19,7 @@ public:
     virtual void imprime();
     virtual Object* primero();
     virtual int localiza(Object*);
+    virtual int getSize();
     virtual ~ArrayList();
 protected:
     Object** array;
