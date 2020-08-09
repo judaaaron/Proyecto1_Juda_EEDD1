@@ -11,14 +11,14 @@ public:
     ArrayList();
     virtual bool inserta(int, Object*);
     virtual Object* suprime(int);
-   virtual void anula();
+    virtual void anula();
     virtual Object* recupera(int);
-   virtual Object* siguiente(int);
+    virtual Object* siguiente(int);
     virtual Object* anterior(int);
-   virtual bool vacia();
+    virtual bool vacia();
     virtual void imprime();
     virtual Object* primero();
-//    virtual int localiza(Object*)=0;
+    virtual int localiza(Object*);
     virtual ~ArrayList();
 protected:
     Object** array;

@@ -9,7 +9,7 @@ using namespace std;
 class Object {
 public:
 virtual string toString()=0;
-//virtual bool equals(Object*)=0;
+virtual bool equals(Object*)=0;
 private:
 
 };

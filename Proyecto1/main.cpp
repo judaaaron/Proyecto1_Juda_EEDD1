@@ -45,6 +45,7 @@ int p, n; // variables goblales
 Object* o [10000];
 
 ArrayList* arrayList = new ArrayList();
+
 int main(int argc, char** argv) {
     mainFalso();
     return 0;
@@ -246,33 +247,33 @@ int opcionesListas() {
 }
 
 void OpcionesArraylist() {
-     Alumno* alumno = NULL;
-     
-    
+    Alumno* alumno = NULL;
+
+
     int opc = 0;
-    string nombre,cuenta;
+    string nombre, cuenta;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
             case 1:
             {// insertar elemento 
-                
+
                 char resp = 's';
-                while (resp == 's' || resp == 'S') {                   
-                    
-                     cout << "Ingrese la posicion a insertar alumno(>=0): ";
-                     cin >> p;
-                     cout<<"Ingrese nombre del alumno: ";
-                     cin>>nombre;
-                     cout<<"Ingrese # de cuenta: ";
-                     cin>>cuenta;
-                     alumno = new Alumno(nombre,cuenta);
-                     bool valido=arrayList->inserta(p, alumno);
-                     if(valido==true){
-                        cout << "Alumno " << nombre << " agregado con exito a la lista.\n"<<endl;
-                     }else{
-                         cout<<"Posicion incorrecta, lo posicion que ha ingresado esta fuera del limite de elementos en la lista"<<endl;
-                     }
-  
+                while (resp == 's' || resp == 'S') {
+
+                    cout << "Ingrese la posicion a insertar alumno(>=0): ";
+                    cin >> p;
+                    cout << "Ingrese nombre del alumno: ";
+                    cin>>nombre;
+                    cout << "Ingrese # de cuenta: ";
+                    cin>>cuenta;
+                    alumno = new Alumno(nombre, cuenta);
+                    bool valido = arrayList->inserta(p, alumno);
+                    if (valido == true) {
+                        cout << "Alumno " << nombre << " agregado con exito a la lista.\n" << endl;
+                    } else {
+                        cout << "Posicion incorrecta, lo posicion que ha ingresado esta fuera del limite de elementos en la lista" << endl;
+                    }
+
                     cout << "Desea insertar otro elemento? [S/N]: ";
                     cin>>resp;
                 }
@@ -288,6 +289,20 @@ void OpcionesArraylist() {
 
             case 3:
             {// buscar elemento
+                string nombre, cuenta;
+                cout << "Ingrese nombre del alumno: ";
+                cin>>nombre;
+                cout << "Ingrese # de cuenta: ";
+                cin>>cuenta;
+                alumno = new Alumno(nombre, cuenta);
+                int ubicacion = arrayList->localiza(alumno);
+
+                if (ubicacion == -1) {
+                    cout<<"No se encontró ningun elemento con esos datos."<<endl;
+                } else {
+                    cout << "El numero de lista para este alumno es: " << ubicacion << endl;
+                }
+                cout << endl;
 
                 break;
             }
@@ -295,35 +310,38 @@ void OpcionesArraylist() {
             case 4:
             {// borrar elemento
                 int p;
-                cout<<"Ingrese posicion para eliminar: ";
+                cout << "Ingrese posicion para eliminar: ";
                 cin>>p;
-                o[p]=arrayList->suprime(p);
-                cout<<"El elemento ha sido eliminado exitosamente"<<endl;
-
+                o[p] = arrayList->suprime(p);
+                cout << "El elemento "<< o[p]->toString()<<" ha sido eliminado exitosamente" << endl;
+                cout<<endl;
                 break;
             }
 
             case 5:
             {// ver si esta vacia           
-                if(arrayList->vacia()){
-                    cout<<"En estos momentos la lista esta vacia"<<endl;
-                }else{
-                    cout<<"Hay 1 o mas elementos en la lista"<<endl;
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia" << endl;
+                    cout << endl;
+                } else {
+                    cout << "Hay 1 o mas elementos en la lista" << endl;
+                    cout << endl;
                 }
-                cout<<endl;
+                cout << endl;
                 break;
             }
 
             case 6:
             {// obtener elemento por posicion
                 int pp;
-                cout<<"Ingrese un posicion ";
+                cout << "Ingrese un posicion ";
                 cin>>pp;
-              ///  alumno=arrayList->recupera(pp);
+                ///  alumno=arrayList->recupera(pp);
                 //o[pp]= new Alumno(nombre,cuenta);
-                o[pp]=arrayList->recupera(pp);
-                 cout<<"El alumno que contiene esa posicion es: "<<endl;
-                cout<<o[pp]->toString()<<endl;;
+                o[pp] = arrayList->recupera(pp);
+                cout << "El alumno que se encuentra en esa posicion es: " << endl;
+                cout << o[pp]->toString() << endl;
+                cout << endl;
 
                 break;
             }
@@ -331,49 +349,54 @@ void OpcionesArraylist() {
             case 7:
             {// obtener siguiente
                 int ps;
-                cout<<"Ingrese una posicion: ";
+                cout << "Ingrese una posicion: ";
                 cin>>ps;
-                if(arrayList->siguiente(ps)==NULL){
-                    cout<<"No hay un elemento siguiente"<<endl;
-                }else{
-                    cout<<"El alumno que contiene esa posicion es: "<<endl;
-                    cout<<arrayList->siguiente(ps)->toString();
-                }  
+                if (arrayList->siguiente(ps) == NULL) {
+                    cout << "No hay un elemento siguiente" << endl;
+                } else {
+                    cout << "El alumno que se encuentra en esa posicion es: " << endl;
+                    cout << arrayList->siguiente(ps)->toString();
+                    cout << endl;
+                }
                 break;
             }
 
             case 8:
             { // obtener anterior
-                 int ps;
-                cout<<"Ingrese una posicion: ";
+                int ps;
+                cout << "Ingrese una posicion: ";
                 cin>>ps;
-                if(arrayList->anterior(ps)==NULL){
-                    cout<<"No hay un elemento anterior"<<endl;
-                }else{
-                    cout<<"El alumno que contiene esa posicion es: "<<endl;
-                    cout<<arrayList->anterior(ps)->toString();
+                if (arrayList->anterior(ps) == NULL) {
+                    cout << "No hay un elemento anterior" << endl;
+                    cout << endl;
+                } else {
+                    cout << "El alumno que se encuentra en esa posicion es: " << endl;
+                    cout << arrayList->anterior(ps)->toString();
                 }
-               // o[ps]=arrayList->anterior(ps)->toString();
-               
+                // o[ps]=arrayList->anterior(ps)->toString();
+
                 break;
             }
 
             case 9:
             {// borrar todos los elementos(anula)
                 char resp;
-                cout<<"¿Deseas eliminar todos el elementos de la lista?[S/N]  ";
+                cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
                 cin>>resp;
-                if(resp=='s' || resp=='S'){
-                    cout<<"¿Estas seguro? [S/N] ";
+                if (resp == 's' || resp == 'S') {
+                    cout << "¿Estas seguro? [S/N]: ";
                     cin>>resp;
-                    if(resp=='s' || resp=='S'){
+                    if (resp == 's' || resp == 'S') {
                         arrayList->anula();
-                        cout<<"Los elementos han sido borrados exitosamente!"<<endl;
-                    }else{
-                        
+                        cout << "Los elementos han sido borrados exitosamente!" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                        cout << endl;
                     }
-                }else{
-                    
+                } else {
+                    cout << "Volviendo al menu de listas..." << endl;
+                    cout << endl;
                 }
                 break;
             }

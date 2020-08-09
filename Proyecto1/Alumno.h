@@ -22,6 +22,7 @@ public:
     void setNombre(string);
     void setCuenta(string);
     virtual string toString();
+    virtual bool equals(Object*);
     virtual ~Alumno();
 protected:
     string nombre,cuenta;
