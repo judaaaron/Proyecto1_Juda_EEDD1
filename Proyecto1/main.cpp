@@ -42,10 +42,10 @@ void OpcionesLinkedQueue();
 
 
 int p, n; // variables goblales
-Object* o;
+Object* o [10000];
+
 ArrayList* arrayList = new ArrayList();
 int main(int argc, char** argv) {
-    
     mainFalso();
     return 0;
 }
@@ -247,17 +247,19 @@ int opcionesListas() {
 
 void OpcionesArraylist() {
      Alumno* alumno = NULL;
+     
+    
     int opc = 0;
+    string nombre,cuenta;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
             case 1:
             {// insertar elemento 
-               
-                alumno = new Alumno();
+                
                 char resp = 's';
                 while (resp == 's' || resp == 'S') {                   
-                    string nombre,cuenta;
-                    cout << "Ingrese la posicion a insertar alumno(>=0): ";
+                    
+                     cout << "Ingrese la posicion a insertar alumno(>=0): ";
                      cin >> p;
                      cout<<"Ingrese nombre del alumno: ";
                      cin>>nombre;
@@ -280,7 +282,7 @@ void OpcionesArraylist() {
 
             case 2:
             {// imprimir elementos
-
+                arrayList->imprime();
                 break;
             }
 
@@ -292,6 +294,11 @@ void OpcionesArraylist() {
 
             case 4:
             {// borrar elemento
+                int p;
+                cout<<"Ingrese posicion para eliminar: ";
+                cin>>p;
+                o[p]=arrayList->suprime(p);
+                cout<<"El elemento ha sido eliminado exitosamente"<<endl;
 
                 break;
             }
@@ -303,7 +310,7 @@ void OpcionesArraylist() {
                 }else{
                     cout<<"Hay 1 o mas elementos en la lista"<<endl;
                 }
-
+                cout<<endl;
                 break;
             }
 
@@ -313,27 +320,61 @@ void OpcionesArraylist() {
                 cout<<"Ingrese un posicion ";
                 cin>>pp;
               ///  alumno=arrayList->recupera(pp);
-                o=arrayList->recupera(pp);
-                cout<<o;
+                //o[pp]= new Alumno(nombre,cuenta);
+                o[pp]=arrayList->recupera(pp);
+                 cout<<"El alumno que contiene esa posicion es: "<<endl;
+                cout<<o[pp]->toString()<<endl;;
 
                 break;
             }
 
             case 7:
             {// obtener siguiente
-                cout << "obteniendo siguiente";
+                int ps;
+                cout<<"Ingrese una posicion: ";
+                cin>>ps;
+                if(arrayList->siguiente(ps)==NULL){
+                    cout<<"No hay un elemento siguiente"<<endl;
+                }else{
+                    cout<<"El alumno que contiene esa posicion es: "<<endl;
+                    cout<<arrayList->siguiente(ps)->toString();
+                }  
                 break;
             }
 
             case 8:
-            {
-
-                break; // obtener anterior
+            { // obtener anterior
+                 int ps;
+                cout<<"Ingrese una posicion: ";
+                cin>>ps;
+                if(arrayList->anterior(ps)==NULL){
+                    cout<<"No hay un elemento anterior"<<endl;
+                }else{
+                    cout<<"El alumno que contiene esa posicion es: "<<endl;
+                    cout<<arrayList->anterior(ps)->toString();
+                }
+               // o[ps]=arrayList->anterior(ps)->toString();
+               
+                break;
             }
 
             case 9:
             {// borrar todos los elementos(anula)
-
+                char resp;
+                cout<<"¿Deseas eliminar todos el elementos de la lista?[S/N]  ";
+                cin>>resp;
+                if(resp=='s' || resp=='S'){
+                    cout<<"¿Estas seguro? [S/N] ";
+                    cin>>resp;
+                    if(resp=='s' || resp=='S'){
+                        arrayList->anula();
+                        cout<<"Los elementos han sido borrados exitosamente!"<<endl;
+                    }else{
+                        
+                    }
+                }else{
+                    
+                }
                 break;
             }
 

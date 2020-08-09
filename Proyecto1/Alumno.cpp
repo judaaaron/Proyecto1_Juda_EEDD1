@@ -21,6 +21,11 @@ void Alumno:: setCuenta(string cuenta){
     this->cuenta=cuenta;
 }
 
+ string Alumno:: toString(){
+    stringstream ss;
+    ss << "Nombre: "<< nombre <<" "<< "Cuenta #: "<< cuenta;
+    return ss.str();
+}
 
 Alumno::~Alumno() {
 }

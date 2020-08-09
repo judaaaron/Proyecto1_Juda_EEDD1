@@ -11,7 +11,7 @@ class TDA_Lista {
 public:
     TDA_Lista();
     virtual bool inserta(int, Object*)=0;
-//    virtual Object* suprime(int)=0;
+    virtual Object* suprime(int)=0;
    virtual void anula()=0;
     virtual Object* recupera(int)=0;
    virtual Object* siguiente(int)=0;

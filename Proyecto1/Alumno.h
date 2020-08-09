@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include<string>
+#include <sstream>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
     string getCuenta();
     void setNombre(string);
     void setCuenta(string);
-    string toString();
+    virtual string toString();
     virtual ~Alumno();
 protected:
     string nombre,cuenta;

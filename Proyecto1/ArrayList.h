@@ -10,7 +10,7 @@ class ArrayList : public TDA_Lista
 public:
     ArrayList();
     virtual bool inserta(int, Object*);
-//    virtual Object* suprime(int)=0;
+    virtual Object* suprime(int);
    virtual void anula();
     virtual Object* recupera(int);
    virtual Object* siguiente(int);

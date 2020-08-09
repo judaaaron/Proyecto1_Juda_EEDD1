@@ -24,7 +24,8 @@ bool ArrayList::inserta(int p, Object* x) {
         //            array[0] = x;
         //           
         //        }
-        if (p == 0) {
+        
+        if (p == 0) {// insertar al inicio
             //hacer corrimiento
             for (int i = n; i > 0; i--) {
                 array[i] = array[i - 1];
@@ -62,17 +63,24 @@ Object* ArrayList::primero() {
 }
 
 void ArrayList::anula() {
-    for (int i = 0; i < n; i++)
+    if(vacia()){
+        cout<<"En estos momentos no hay elementos en la lista!"<<endl;
+    }else{
+        for (int i = 0; i < n; i++)
         delete array[i];
 
-    n = 0;
+        this->n = 0;
+    }
+    
 }
 
 Object* ArrayList::recupera(int p) {
+    Object* retval=NULL;
     if (p >= 0 && p < n + 1) {
-        return array[p];
-    }else{
-        return NULL;
+        retval = array[p];
+        return retval;
+    } else {
+        return retval;
     }
     //retornar el valor del objeto que corresponde a p en el array	
 }
@@ -86,10 +94,40 @@ Object* ArrayList::anterior(int p) {
 }
 
 void ArrayList::imprime() {
-    for (int i = 0; i < this->n; i++) {
-        cout << "->" << this->array[i];
+    if(vacia()){
+        cout<<"En estos momentos la lista esta vacia: "<<endl;
+    }else{
+        for (int i = 0; i < this->n; i++) {
+            cout << "->" << this->array[i]->toString()<<endl;
+         }   
+        cout << endl;
     }
-    cout << endl;
+  
+}
+
+Object* ArrayList::suprime(int p) {
+    //validar p en el rango ( 1 hasta n )
+    //determinar los corrimientos necesarios y realizarlos
+    //decrementar n
+    //retornar lo que estaba en la casilla p
+    //else
+    //return null
+     if (p >= 0 && p < n + 1) {
+         if(p==n-1){
+            Object* retval = array[p];
+            array[n-1]=NULL;
+            this->n--;
+            return retval;
+             
+         }else{
+             Object* retval = array[p];
+             for(int i=p; i < n-1; i++){
+                 array[i]=array[i+1];
+             }
+             this->n--;
+             return retval;
+         }
+     }
 }
 
 ArrayList::~ArrayList() {
