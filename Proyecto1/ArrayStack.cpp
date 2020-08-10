@@ -27,8 +27,8 @@ Object* ArrayStack::pop() {
 }
 
 Object* ArrayStack::top() {
-    if (!isEmpty()) {
-        return arrayPila[tope - 1];
+    if (!(isEmpty())) {
+        return arrayPila[tope-1];
     } else {
         return NULL;
     }

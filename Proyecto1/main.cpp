@@ -535,14 +535,14 @@ void OpcionesArraystack() {
 
             case 2:
             {// sacar
-                if (arrayStack->pop() == NULL) {
-                    cout << "En estos momentos no hay elementos por desencolar" << endl;
-                    cout << endl;
-                } else {
+             //   if (arrayStack->pop() == NULL) {
+                   // cout << "En estos momentos no hay elementos por desencolar" << endl;
+                  //  cout << endl;
+            //    } else {
                     pilas[0] = arrayStack->pop();
                     cout << "Simbolo ha sido desencolado" << endl;
                     cout << endl;
-                }
+             //   }
 
                 break;
             }
@@ -553,10 +553,10 @@ void OpcionesArraystack() {
                     cout << "En estos momentos no hay elementos en la pila." << endl;
                     cout << endl;
                 } else {
-                    int top= arrayStack->getSize();
+                    int topi= arrayStack->getSize();
                     cout << "El tope de la pila es: " << endl;
-                    pilas[top] = arrayStack->top();
-                    cout << pilas[top]->toString();
+                    pilas[topi] = arrayStack->top();
+                    cout << pilas[topi]->toString();
                     cout << endl;
                 }
 
