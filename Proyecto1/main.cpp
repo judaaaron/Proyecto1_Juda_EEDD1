@@ -43,8 +43,11 @@ void OpcionesLinkedQueue();
 
 int p, n; // variables goblales
 Object* o [10000];
+Object* pilas[10000];
+Object* colas[10000];
 
-ArrayList* arrayList = new ArrayList();
+TDA_Lista* arrayList = new ArrayList();
+TDA_Pila* arrayStack = new ArrayStack();
 
 int main(int argc, char** argv) {
     mainFalso();
@@ -83,7 +86,6 @@ void mainFalso() {
                 switch (opcion = menuPilas()) {
                     case 1:
                     {// opcion para trabajar con arrayStack
-                        cout << "arraystack";
                         OpcionesArraystack();
                         break;
                     }
@@ -285,6 +287,7 @@ void OpcionesArraylist() {
             case 2:
             {// imprimir elementos
                 arrayList->imprime();
+
                 break;
             }
 
@@ -295,13 +298,13 @@ void OpcionesArraylist() {
                 cin>>cuenta;
                 alumno = new Alumno(cuenta);
                 int ubicacion = arrayList->localiza(alumno);
-                 o[ubicacion] = arrayList->recupera(ubicacion);
+                o[ubicacion] = arrayList->recupera(ubicacion);
 
                 if (ubicacion == -1) {
-                    cout<<"No se encontró ningun elemento con esos datos."<<endl;
+                    cout << "No se encontró ningun elemento con esos datos." << endl;
                 } else {
                     //1 cout << o[ubicacion]->toString() << endl;
-                    cout << "El numero de lista para: "<<  o[ubicacion]->toString()<< " es: "<<ubicacion << endl;
+                    cout << "El numero de lista para: " << o[ubicacion]->toString() << " es: " << ubicacion << endl;
                 }
                 cout << endl;
 
@@ -314,8 +317,8 @@ void OpcionesArraylist() {
                 cout << "Ingrese posicion para eliminar: ";
                 cin>>p;
                 o[p] = arrayList->suprime(p);
-                cout << "El elemento "<< o[p]->toString()<<" ha sido eliminado exitosamente" << endl;
-                cout<<endl;
+                cout << "El elemento " << o[p]->toString() << " ha sido eliminado exitosamente" << endl;
+                cout << endl;
                 break;
             }
 
@@ -325,13 +328,13 @@ void OpcionesArraylist() {
                     cout << "En estos momentos la lista esta vacia" << endl;
                     cout << endl;
                 } else {
-                    int elementos= arrayList->getSize();
-                    if(elementos==1){
-                        cout<<"Solo hay un elemento en la lista."<<endl;
-                    }else{
-                         cout <<"Hay: "<< elementos << " elementos en la lista" << endl;
+                    int elementos = arrayList->getSize();
+                    if (elementos == 1) {
+                        cout << "Solo hay un elemento en la lista." << endl;
+                    } else {
+                        cout << "Hay: " << elementos << " elementos en la lista" << endl;
                     }
-                  
+
                     cout << endl;
                 }
                 cout << endl;
@@ -381,7 +384,7 @@ void OpcionesArraylist() {
                     cout << arrayList->anterior(ps)->toString();
                 }
                 // o[ps]=arrayList->anterior(ps)->toString();
-                cout<<endl;
+                cout << endl;
                 break;
             }
 
@@ -396,7 +399,6 @@ void OpcionesArraylist() {
                     if (resp == 's' || resp == 'S') {
                         arrayList->anula();
                         cout << "Los elementos han sido borrados exitosamente!" << endl;
-                        delete arrayList;
                         cout << endl;
                     } else {
                         cout << "Hubo un error al borrar los elementos de la lista." << endl;
@@ -514,36 +516,69 @@ int opcionesPilas() {
 }
 
 void OpcionesArraystack() {
+    Simbolo* simbolo = NULL;
+    char caracter;
     int opc = 0;
     while (opc != 6) {
         switch (opc = opcionesPilas()) {
             case 1:
             {// empujar
-                cout << "push";
+                cout << "Ingrese un simbolo: ";
+                cin>>caracter;
+                simbolo = new Simbolo(caracter);
+                arrayStack->push(simbolo);
+                cout << "Simbolo ha sido ingresado exitosamente." << endl;
+                cout << endl;
+
                 break;
             }
 
             case 2:
             {// sacar
+                if (arrayStack->pop() == NULL) {
+                    cout << "En estos momentos no hay elementos por desencolar" << endl;
+                    cout << endl;
+                } else {
+                    pilas[0] = arrayStack->pop();
+                    cout << "Simbolo ha sido desencolado" << endl;
+                    cout << endl;
+                }
 
                 break;
             }
 
             case 3:
             {// ver tope
+                if (arrayStack->top() == NULL) {
+                    cout << "En estos momentos no hay elementos en la pila." << endl;
+                    cout << endl;
+                } else {
+                    int top= arrayStack->getSize();
+                    cout << "El tope de la pila es: " << endl;
+                    pilas[top] = arrayStack->top();
+                    cout << pilas[top]->toString();
+                    cout << endl;
+                }
 
                 break;
             }
 
             case 4:
             {//verificar si esta vacia
+                if (arrayStack->isEmpty()) {
+                    cout << "En estos momentos la pila esta vacia." << endl;
+                    cout << endl;
+                } else {
+                    cout << "Hay elementos en la pila." << endl;
+                    cout << endl;
+                }
 
                 break;
             }
 
             case 5:
             {// imprimir elementos
-
+                arrayStack->print();
                 break;
             }
 

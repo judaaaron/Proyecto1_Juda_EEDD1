@@ -32,7 +32,7 @@ void Alumno::setCuenta(string cuenta) {
 
 string Alumno::toString() {
     stringstream ss;
-    ss << "Nombre: " << nombre << " " << "Cuenta #: " << cuenta;
+    ss << "Nombre: " << nombre << " ->" << "Cuenta #: " << cuenta;
     return ss.str();
 }
 
