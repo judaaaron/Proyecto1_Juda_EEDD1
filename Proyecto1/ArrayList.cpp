@@ -4,13 +4,13 @@
 
 ArrayList::ArrayList() {
     this->capacity = 10000;
-    this->n = 0;
+    this->size = 0;
     this->array = new Object*[this->capacity];
 }
 
 bool ArrayList::inserta(int p, Object* x) {
 
-    if (p >= 1 && p <= n + 1) {
+    if (p >= 1 && p <= size + 1) {
         // if (size == capacity) {//revisar si hay capacidad para el elemento
         //   resize();
         //  }
@@ -27,20 +27,20 @@ bool ArrayList::inserta(int p, Object* x) {
 
         if (p == 1) {// insertar al inicio
             //hacer corrimiento
-            for (int i = n; i > 0; i--) {
+            for (int i = size; i > 0; i--) {
                 array[i] = array[i - 1];
             }
             array[0] = x;
         }//insertar al final
-        else if (p == n) {
-            array[n] = x;
+        else if (p == size) {
+            array[size] = x;
         } else {
             //hacer corrimiento
-            for (int i = n; i >= p-1; i--)
+            for (int i = size; i >= p-1; i--)
                 array[i + 1] = array[i];
             array[p-1] = x;
         }
-        this->n++; // incremento para poder insertar mas elementos
+        this->size++; // incremento para poder insertar mas elementos
 
         return true;
 
@@ -52,7 +52,7 @@ bool ArrayList::inserta(int p, Object* x) {
 }
 
 bool ArrayList::vacia() {
-    return n == 0;
+    return size == 0;
 }
 
 Object* ArrayList::primero() {
@@ -66,17 +66,17 @@ void ArrayList::anula() {
     if (vacia()) {
         cout << "En estos momentos no hay elementos en la lista!" << endl;
     } else {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < size; i++)
             delete array[i];
 
-        this->n = 0;
+        this->size = 0;
     }
 
 }
 
 Object* ArrayList::recupera(int p) {
     Object* retval = NULL;
-    if (p >= 1 && p <= n) {
+    if (p >= 1 && p <= size) {
         retval = array[p-1];
         return retval;
     } else {
@@ -95,10 +95,10 @@ Object* ArrayList::anterior(int p) {
 
 void ArrayList::imprime() {
     if (vacia()) {
-        cout << "En estos momentos la lista esta vacia: " << endl;
+        cout << "En estos momentos la lista esta vacia. " << endl;
     } else {
         cout<<"LISTA DE ALUMNOS REGISTRADOS"<<endl;
-        for (int i = 0; i < this->n; i++) {
+        for (int i = 0; i < this->size; i++) {
             cout <<i+1<< "->" << this->array[i]->toString() << endl;
         }
         cout << endl;
@@ -114,21 +114,21 @@ Object* ArrayList::suprime(int p) {
     //else
     //return null
     imprime();
-    if (p >= 1 && p <= n + 1) {
-        if (p == n) {
+    if (p >= 1 && p <= size + 1) {
+        if (p == size) {
             Object* retval = array[p-1];
-           array[n - 1] = NULL;
-            this->n--;
+           array[size - 1] = NULL;
+            this->size--;
             return retval;
 
         } else {
             Object* retval = array[p-1];
-            for (int i = p-1; i < n ; i++) {
+            for (int i = p-1; i < size ; i++) {
                 array[i] = array[i + 1];
                 
             }
-             array[n - 1] = NULL;
-            this->n--;
+             array[size - 1] = NULL;
+            this->size--;
             return retval;
         }
     }else{
@@ -137,7 +137,7 @@ Object* ArrayList::suprime(int p) {
 }
 
 int ArrayList::localiza(Object* x) {
-    for(int i=0; i< this->n; i++){
+    for(int i=0; i< this->size; i++){
         if(array[i]->equals(x))
             return i+1;
     }
@@ -153,11 +153,11 @@ int ArrayList::localiza(Object* x) {
 }
 
  int ArrayList:: getSize(){
-     return this->n;
+     return this->size;
 }
 
 ArrayList::~ArrayList() {
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < size; i++) {
         delete this->array[i];
         delete [] this->array;
     }

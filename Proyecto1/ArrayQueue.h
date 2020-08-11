@@ -4,14 +4,20 @@
 
 #include "TDA_Cola.h"
 
-class ArrayQueue : public TDA_Cola
-{
-    
+class ArrayQueue : public TDA_Cola {
 public:
     ArrayQueue();
-   
+    virtual Object* frente();
+    virtual void poneEnCola(Object*);
+    virtual Object* quitaDeCola();
+    virtual bool vacia();
+    virtual void anula();
+    virtual void imprimir();
+
     virtual ~ArrayQueue();
-private:
+protected:
+    Object** arrayCola;
+    int capacity, front, fin, auxiliar;
 
 };
 

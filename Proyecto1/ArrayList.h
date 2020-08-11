@@ -23,7 +23,7 @@ public:
     virtual ~ArrayList();
 protected:
     Object** array;
-    int capacity, n; 
+    int capacity, size; 
 
 };
 

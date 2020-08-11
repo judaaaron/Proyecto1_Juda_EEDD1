@@ -48,6 +48,7 @@ Object* colas[10000];
 
 TDA_Lista* arrayList = new ArrayList();
 TDA_Pila* arrayStack = new ArrayStack();
+TDA_Cola* arrayQueue = new ArrayQueue();
 
 int main(int argc, char** argv) {
     mainFalso();
@@ -107,7 +108,6 @@ void mainFalso() {
                 switch (opcion = menuColas()) {
                     case 1:
                     {// opcion para trabajar con arrayqueue
-                        cout << "arrayqueue";
                         OpcionesArrayQueue();
                         break;
                     }
@@ -251,8 +251,6 @@ int opcionesListas() {
 
 void OpcionesArraylist() {
     Alumno* alumno = NULL;
-
-
     int opc = 0;
     string nombre, cuenta;
     while (opc != 10) {
@@ -535,14 +533,14 @@ void OpcionesArraystack() {
 
             case 2:
             {// sacar
-             //   if (arrayStack->pop() == NULL) {
-                   // cout << "En estos momentos no hay elementos por desencolar" << endl;
-                  //  cout << endl;
-            //    } else {
-                    pilas[0] = arrayStack->pop();
-                    cout << "Simbolo ha sido desencolado" << endl;
-                    cout << endl;
-             //   }
+                //   if (arrayStack->pop() == NULL) {
+                // cout << "En estos momentos no hay elementos por desencolar" << endl;
+                //  cout << endl;
+                //    } else {
+                pilas[0] = arrayStack->pop();
+                cout << "Simbolo ha sido sacado exitosamente." << endl;
+                cout << endl;
+                //   }
 
                 break;
             }
@@ -553,7 +551,7 @@ void OpcionesArraystack() {
                     cout << "En estos momentos no hay elementos en la pila." << endl;
                     cout << endl;
                 } else {
-                    int topi= arrayStack->getSize();
+                    int topi = arrayStack->getSize();
                     cout << "El tope de la pila es: " << endl;
                     pilas[topi] = arrayStack->top();
                     cout << pilas[topi]->toString();
@@ -667,34 +665,62 @@ int opcionesColas() {
 
 void OpcionesArrayQueue() {
     int opc = 0;
+    Alumno* alumno = NULL;
+    string nombre, cuenta;
     while (opc != 6) {
         switch (opc = opcionesColas()) {
             case 1:
             {// encolar
-                cout << "encolar";
+                cout << "Ingrese nombre del alumno: ";
+                cin>>nombre;
+                cout << "Ingrese # de cuenta: ";
+                cin>>cuenta;
+                alumno = new Alumno(nombre, cuenta);
+                arrayQueue->poneEnCola(alumno);
+                cout << "Datos en cola exitosamente" << endl;
+                cout << endl;
                 break;
             }
 
             case 2:
             {// desencolar
-
+                //                if (arrayQueue->quitaDeCola() != NULL) {
+                //                    cout << "En estos momentos la cola esta vacia" << endl;
+                //                } else {
+                colas[0] = arrayQueue->quitaDeCola();
+                cout << "Elemento ha sido quitado de la cola exitosamente" << endl;
+                //}
                 break;
             }
 
             case 3:
             {// ver tope
+                if (arrayQueue->frente() == NULL) {
+                    cout << "No hay elementos en la cola para mostrar el peek" << endl;
+                } else {
+                    colas[0] = arrayQueue->frente();
+                    cout << colas[0]->toString() << endl;
+                }
+
 
                 break;
             }
 
             case 4:
             {//verificar si esta vacia
-
+                bool vacio = arrayQueue->vacia();
+                if (vacio) {
+                    cout << "En estos momentos la cola esta vacia." << endl;
+                } else {
+                    cout << "Hay elementos en la cola" << endl;
+                }
+                cout << endl;
                 break;
             }
 
             case 5:
             {// imprimir elementos
+                arrayQueue->imprimir();
 
                 break;
             }

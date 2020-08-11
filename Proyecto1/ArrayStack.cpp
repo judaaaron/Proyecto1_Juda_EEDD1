@@ -4,7 +4,7 @@
 ArrayStack::ArrayStack() {
     this->capacity = 10000;
     this->arrayPila = new Object*[this->capacity];
-    this->tope;
+    this->tope=0;
 
 }
 
