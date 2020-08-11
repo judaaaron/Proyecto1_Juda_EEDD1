@@ -40,8 +40,6 @@ void OpcionesLinkedstack();
 void OpcionesArrayQueue();
 void OpcionesLinkedQueue();
 
-
-int p, n; // variables goblales
 Object* o [10000];
 Object* pilas[10000];
 Object* colas[10000];
@@ -251,7 +249,7 @@ int opcionesListas() {
 
 void OpcionesArraylist() {
     Alumno* alumno = NULL;
-    int opc = 0;
+    int opc = 0,p;
     string nombre, cuenta;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
@@ -689,7 +687,7 @@ void OpcionesArrayQueue() {
                 //                } else {
                 colas[0] = arrayQueue->quitaDeCola();
                 cout << "Elemento ha sido quitado de la cola exitosamente" << endl;
-                //}
+                // }
                 break;
             }
 

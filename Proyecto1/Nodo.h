@@ -13,14 +13,12 @@ public:
     Nodo* getAnterior();
     void setData(Object*);
     Object* getData();
-    
-    
     virtual ~Nodo();
 protected:
     Nodo* siguiente;
     Nodo* anterior;
     Object* data;
-    
+
 };
 
 #endif /* NODO_H */

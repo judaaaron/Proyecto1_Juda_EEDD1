@@ -9,9 +9,7 @@ LinkedList::LinkedList() {
 
  bool LinkedList:: inserta(int p, Object* x){
      // validar el rango de p
-     
-     
-     
+     return false;
  }
 
 
