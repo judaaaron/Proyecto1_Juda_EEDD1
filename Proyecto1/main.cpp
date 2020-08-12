@@ -40,11 +40,14 @@ void OpcionesLinkedstack();
 void OpcionesArrayQueue();
 void OpcionesLinkedQueue();
 
+void validarEntrada(int);
+
 Object* o [10000];
 Object* pilas[10000];
 Object* colas[10000];
 
 TDA_Lista* arrayList = new ArrayList();
+TDA_Lista* linkedList = new LinkedList();
 TDA_Pila* arrayStack = new ArrayStack();
 TDA_Cola* arrayQueue = new ArrayQueue();
 
@@ -91,7 +94,6 @@ void mainFalso() {
 
                     case 2:
                     {// opcion para trabajar con linked stack
-                        cout << "linkedstack";
                         OpcionesLinkedstack();
                         break;
                     }
@@ -145,6 +147,13 @@ int menuPrincipal() {// funcion del menu principal
                 << "4. Salir" << endl
                 << "Ingrese una opcion entre 1 y 4: ";
         cin>>opcion;
+        // validarEntrada(opcion);
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         cout << endl;
         if (opcion >= 1 && opcion <= 4)
             break;
@@ -165,6 +174,12 @@ int menuListas() {
                 << "3. Regresar al menu principal" << endl
                 << "Ingrese una opcion entre 1 y 3: ";
         cin>>opcion;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         cout << endl;
         if (opcion >= 1 && opcion <= 3)
             break;
@@ -187,6 +202,12 @@ int menuPilas() {
                 << "Ingrese una opcion entre 1 y 3: ";
         cin>>opcion;
         cout << endl;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         if (opcion >= 1 && opcion <= 3)
             break;
         else
@@ -207,6 +228,12 @@ int menuColas() {
                 << "3. Regresar al menu principal" << endl
                 << "Ingrese una opcion entre 1 y 3: ";
         cin>>opcion;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         cout << endl;
         if (opcion >= 1 && opcion <= 3)
             break;
@@ -236,6 +263,12 @@ int opcionesListas() {
                 << "Ingrese una opcion entre 1 y 10: ";
         cin>>opcion;
         cout << endl;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         if (opcion >= 1 && opcion <= 10)
             break;
         else
@@ -249,7 +282,7 @@ int opcionesListas() {
 
 void OpcionesArraylist() {
     Alumno* alumno = NULL;
-    int opc = 0,p;
+    int opc = 0, p;
     string nombre, cuenta;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
@@ -419,19 +452,41 @@ void OpcionesArraylist() {
 }
 
 void OpcionesLinkedlist() {
-    cout << "linkedlist";
-    int opc = 0;
+    Alumno* alumno = NULL;
+    string nombre, cuenta;
+    int opc = 0, p;
     while (opc != 10) {
         switch (opc = opcionesListas()) {
             case 1:
             {// insertar elemento
-                cout << "insertar elemento linked list";
+                char resp = 's';
+                while (resp == 's' || resp == 'S') {
+
+                    cout << "Ingrese la posicion a insertar alumno: ";
+                    cin >> p;
+                    cout << "Ingrese nombre del alumno: ";
+                    cin>>nombre;
+                    cout << "Ingrese # de cuenta: ";
+                    cin>>cuenta;
+                    alumno = new Alumno(nombre, cuenta);
+                    bool valido = linkedList->inserta(p, alumno);
+                    if (valido == true) {
+                        cout << "Alumno " << nombre << " agregado con exito a la lista.\n" << endl;
+                        int size = linkedList->getSize();
+                        //cout << size << "  cantidad de nodos" << endl;
+                    } else {
+                        cout << "Posicion incorrecta, lo posicion que ha ingresado esta fuera del limite de elementos en la lista" << endl;
+                    }
+
+                    cout << "Desea insertar otro elemento? [S/N]: ";
+                    cin>>resp;
+                }
                 break;
             }
 
             case 2:
             {// imprimir elementos
-
+                linkedList->imprime();
                 break;
             }
 
@@ -449,7 +504,12 @@ void OpcionesLinkedlist() {
 
             case 5:
             {// ver si esta vacia
-
+                if (linkedList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia" << endl;
+                } else {
+                    cout << "La lista tiene 1 o mas nodos" << endl;
+                }
+                cout << endl;
                 break;
             }
 
@@ -500,6 +560,12 @@ int opcionesPilas() {
                 << "Ingrese una opcion entre 1 y 6: ";
         cin>>opcion;
         cout << endl;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         if (opcion >= 1 && opcion <= 6)
             break;
         else
@@ -649,6 +715,12 @@ int opcionesColas() {
                 << "6. Regresar al menu principal" << endl
                 << "Ingrese una opcion entre 1 y 6: ";
         cin>>opcion;
+        while (!cin) {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Por favor ingrese una entrada valida: ";
+            cin >> opcion;
+        }
         cout << endl;
         if (opcion >= 1 && opcion <= 6)
             break;
@@ -781,4 +853,13 @@ void OpcionesLinkedQueue() {
         }
     }
 
+}
+
+void validarEntrada(int leer) {
+    while (!cin) {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Por favor escoja un numero valido " << endl;
+        cin >> leer;
+    }
 }
