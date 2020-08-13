@@ -498,6 +498,17 @@ void OpcionesLinkedlist() {
 
             case 4:
             {// borrar elemento
+                int po;
+                cout << "Ingrese posicion para eliminar el nodo ";
+                cin>>po;
+                Object* val = linkedList->suprime(po);
+                if (val == NULL) {
+                    cout << "Error la posicion ingresada es incorrecta." << endl;
+                    cout << endl;
+                } else {
+                    cout << "El nodo ha sido eliminado" << endl;
+                    cout << endl;
+                }
 
                 break;
             }
@@ -515,24 +526,73 @@ void OpcionesLinkedlist() {
 
             case 6:
             {// obtener elemento por posicion
+                int p;
+                cout << "Ingrese posicion: ";
+                cin>>p;
+                Object* temp = linkedList->recupera(p);
+                if (temp == NULL) {
+                    cout << "Error" << endl;
+                } else {
+                    cout << linkedList->recupera(p)->toString() << endl;
+                }
+                
+                
 
                 break;
             }
 
             case 7:
             {// obtener siguiente
+                int p;
+                cout << "Ingrese una posicion: " << endl;
+                cin>>p;
+                if (linkedList->siguiente(p) == NULL) {
+                    cout << "No hay elemento siguiente" << endl;
+                    cout << endl;
+                } else {
+                    cout << "El nodo siguiente es: " << linkedList->siguiente(p)->toString() << endl;
+                    cout << endl;
+                }
 
                 break;
             }
 
             case 8:
             {// obtener anterior
+                int p;
+                cout << "Ingrese una posicion: " << endl;
+                cin>>p;
+                if (linkedList->anterior(p) == NULL) {
+                    cout << "No hay elemento anterior" << endl;
+                    cout << endl;
+                } else {
+                    cout << "El nodo anterior es: " << linkedList->anterior(p)->toString() << endl;
+                    cout << endl;
+                }
 
                 break;
             }
 
             case 9:
             {// borrar todos los elementos(anula)
+                char resp;
+                cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
+                cin>>resp;
+                if (resp == 's' || resp == 'S') {
+                    cout << "¿Estas seguro? [S/N]: ";
+                    cin>>resp;
+                    if (resp == 's' || resp == 'S') {
+                        linkedList->anula();
+                        cout << "Los elementos han sido borrados exitosamente!" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                        cout << endl;
+                    }
+                } else {
+                    cout << "Volviendo al menu de listas..." << endl;
+                    cout << endl;
+                }
 
                 break;
             }
