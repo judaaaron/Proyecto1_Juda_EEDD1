@@ -132,7 +132,7 @@ Object* ArrayList::suprime(int p) {
             return retval;
         }
     }else{
-        cout<<"Esta posicion no existe"<<endl;
+        return NULL;
     }
 }
 

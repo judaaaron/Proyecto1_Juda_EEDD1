@@ -151,7 +151,18 @@ Object* LinkedList::primero() {
 
 }
 
-int LinkedList::localiza(Object*) {
+int LinkedList::localiza(Object* x) {
+    int hops = n - 1;
+    Nodo* temp = inicioLista;
+    for (int i = 1; i <= n; i++) {
+
+        if (x->equals(temp->getData())) {
+            return i;
+        }
+        temp = temp->getSiguiente();
+    }
+    return -1;
+
 
 }
 

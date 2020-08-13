@@ -345,9 +345,14 @@ void OpcionesArraylist() {
                 int p;
                 cout << "Ingrese posicion para eliminar: ";
                 cin>>p;
-                o[p] = arrayList->suprime(p);
-                cout << "El elemento " << o[p]->toString() << " ha sido eliminado exitosamente" << endl;
-                cout << endl;
+                Object* val = arrayList->suprime(p);
+                if (val == NULL) {
+                    cout << "Posicion invalida.." << endl;
+                    cout << endl;
+                } else {
+                    cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente." << endl;
+                    cout << endl;
+                }
                 break;
             }
 
@@ -491,7 +496,22 @@ void OpcionesLinkedlist() {
             }
 
             case 3:
-            {// buscar elementp
+            {// buscar elemento
+                string cuenta;
+                cout << "Ingrese # de cuenta: ";
+                cin>>cuenta;
+                alumno = new Alumno(cuenta);
+                int ubicacion = linkedList->localiza(alumno);
+                o[ubicacion] = linkedList->recupera(ubicacion);
+
+                if (ubicacion == -1) {
+                    cout << "No se encontró ningun elemento con esos datos." << endl;
+                } else {
+                    //1 cout << o[ubicacion]->toString() << endl;
+                    cout << "El numero de lista para: " << o[ubicacion]->toString() << " es: " << ubicacion << endl;
+                }
+                cout << endl;
+
 
                 break;
             }
@@ -507,6 +527,7 @@ void OpcionesLinkedlist() {
                     cout << endl;
                 } else {
                     cout << "El nodo ha sido eliminado" << endl;
+                    cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente" << endl;
                     cout << endl;
                 }
 
@@ -515,10 +536,13 @@ void OpcionesLinkedlist() {
 
             case 5:
             {// ver si esta vacia
+                int elements = linkedList->getSize();
                 if (linkedList->vacia()) {
                     cout << "En estos momentos la lista esta vacia" << endl;
+                } else if (elements == 1) {
+                    cout << "Solo hay 1 nodo en este momento." << endl;
                 } else {
-                    cout << "La lista tiene 1 o mas nodos" << endl;
+                    cout << "Hay " << elements << " nodos en este momento." << endl;
                 }
                 cout << endl;
                 break;
@@ -535,8 +559,8 @@ void OpcionesLinkedlist() {
                 } else {
                     cout << linkedList->recupera(p)->toString() << endl;
                 }
-                
-                
+
+
 
                 break;
             }
