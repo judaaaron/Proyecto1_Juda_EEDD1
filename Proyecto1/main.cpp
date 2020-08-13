@@ -49,6 +49,7 @@ Object* colas[10000];
 TDA_Lista* arrayList = new ArrayList();
 TDA_Lista* linkedList = new LinkedList();
 TDA_Pila* arrayStack = new ArrayStack();
+TDA_Pila* linkedStack = new LinkedStack();
 TDA_Cola* arrayQueue = new ArrayQueue();
 
 int main(int argc, char** argv) {
@@ -560,8 +561,6 @@ void OpcionesLinkedlist() {
                     cout << linkedList->recupera(p)->toString() << endl;
                 }
 
-
-
                 break;
             }
 
@@ -743,34 +742,56 @@ void OpcionesArraystack() {
 
 void OpcionesLinkedstack() {
     int opc = 0;
+    Simbolo* sim = NULL;
+    char caracter;
     while (opc != 6) {
         switch (opc = opcionesPilas()) {
             case 1:
             {// empujar
-                cout << "push en linked";
+                cout << "Ingrese un simbolo: ";
+                cin>>caracter;
+                sim = new Simbolo(caracter);
+                linkedStack->push(sim);
+                cout << "Simbolo ha sido ingresado exitosamente." << endl;
+                cout << endl;
                 break;
             }
 
             case 2:
             {// sacar
-
+                Object* temp= linkedStack->pop();
+                cout<<"El nodo ha sido sacado de la pila exitosamente."<<endl;
                 break;
             }
 
             case 3:
             {// ver tope
-
+                Object* temp = linkedStack->top();
+                if (temp == NULL) {
+                    cout << "No hay nodo tope en estos momentos." << endl;
+                } else {
+                    cout << "El tope de la pila es: " << endl;
+                    cout << temp->toString();
+                }
+                cout << endl;
                 break;
             }
 
             case 4:
             {//verificar si esta vacia
+                if (linkedStack->isEmpty()) {
+                    cout << "En estos momentos la pila esta vacia." << endl;
 
+                } else {
+                    cout << "Hay 1 o mas elementos en la pila." << endl;
+                }
+                cout << endl;
                 break;
             }
 
             case 5:
             {// imprimir elementos
+                linkedStack->print();
 
                 break;
             }

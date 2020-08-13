@@ -148,6 +148,7 @@ void LinkedList::imprime() {
 }
 
 Object* LinkedList::primero() {
+    return NULL;
 
 }
 
