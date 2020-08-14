@@ -51,10 +51,16 @@ TDA_Lista* linkedList = new LinkedList();
 TDA_Pila* arrayStack = new ArrayStack();
 TDA_Pila* linkedStack = new LinkedStack();
 TDA_Cola* arrayQueue = new ArrayQueue();
+TDA_Cola* linkedQueue = new LinkedQueue();
 
 int main(int argc, char** argv) {
     mainFalso();
     delete arrayList;
+    delete linkedList;
+    delete arrayStack;
+    delete linkedStack;
+    delete arrayQueue;
+    delete linkedQueue;
     return 0;
 }
 
@@ -115,7 +121,6 @@ void mainFalso() {
 
                     case 2:
                     {// opcion para trabajar con linkedqueue
-                        cout << "linkedqueue";
                         OpcionesLinkedQueue();
                         break;
                     }
@@ -759,8 +764,13 @@ void OpcionesLinkedstack() {
 
             case 2:
             {// sacar
-                Object* temp= linkedStack->pop();
-                cout<<"El nodo ha sido sacado de la pila exitosamente."<<endl;
+                Object* temp = linkedStack->pop();
+                if (temp == NULL) {
+                    cout << "En este momento la pila se encuentra vacia." << endl;
+                } else {
+                    cout << "El nodo ha sido sacado de la pila exitosamente." << endl;
+                }
+                cout << endl;
                 break;
             }
 
@@ -916,35 +926,63 @@ void OpcionesArrayQueue() {
 
 void OpcionesLinkedQueue() {
     int opc = 0;
+    Alumno* alumno = NULL;
+    string nombre, cuenta;
     while (opc != 6) {
         switch (opc = opcionesColas()) {
             case 1:
             {// encolar
-                cout << "encolar en linkedQueue";
+                cout << "Ingrese nombre del alumno: ";
+                cin>>nombre;
+                cout << "Ingrese # de cuenta: ";
+                cin>>cuenta;
+                alumno = new Alumno(nombre, cuenta);
+                linkedQueue->poneEnCola(alumno);
+                cout << "Datos en cola exitosamente" << endl;
+                cout << endl;
+
                 break;
             }
 
             case 2:
             {// desencolar
-
+                Object* temp = linkedQueue->quitaDeCola();
+                if (temp == NULL) {
+                    cout << "En este momento la cola esta vacia." << endl;
+                } else {
+                    cout << "Elemento ha sido eliminado exitosamente." << endl;
+                }
+                cout << endl;
                 break;
             }
 
             case 3:
             {// ver tope
+                Object* temp = linkedQueue->frente();
+                if (temp == NULL) {
+                    cout << "En este momento no hay elemento frente en la cola." << endl;
+                } else {
+                    cout << "El frente de la cola es: " << temp->toString() << endl;
+                }
 
                 break;
             }
 
             case 4:
             {//verificar si esta vacia
-
+                if (linkedQueue->vacia()) {
+                    cout << "En este momento la cola esta vacia." << endl;
+                } else {
+                    cout << "La cola tiene 1 o mas elementos." << endl;
+                }
+                cout << endl;
                 break;
             }
 
             case 5:
             {// imprimir elementos
-
+                linkedQueue->imprimir();
+                cout<<endl;
                 break;
             }
 
