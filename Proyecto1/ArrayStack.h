@@ -21,7 +21,7 @@ public:
 protected:
     int capacity,tope;
     Object** arrayPila;
-    Simbolo* sim;
+ 
 
 };
 

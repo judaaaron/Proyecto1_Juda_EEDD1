@@ -16,7 +16,6 @@
 #include "Nodo.h"
 #include "Simbolo.h"
 
-
 using namespace std;
 
 void mainFalso();
@@ -31,6 +30,8 @@ int opcionesListas();
 int opcionesPilas();
 int opcionesColas();
 
+//prototipos para las diferentes operaciones de los TDAs
+
 void OpcionesArraylist();
 void OpcionesLinkedlist();
 
@@ -42,10 +43,12 @@ void OpcionesLinkedQueue();
 
 void validarEntrada(int);
 
+// arreglos globales de tipo Object
 Object* o [10000];
 Object* pilas[10000];
 Object* colas[10000];
 
+// instancia de las diferentes clases
 TDA_Lista* arrayList = new ArrayList();
 TDA_Lista* linkedList = new LinkedList();
 TDA_Pila* arrayStack = new ArrayStack();
@@ -53,8 +56,12 @@ TDA_Pila* linkedStack = new LinkedStack();
 TDA_Cola* arrayQueue = new ArrayQueue();
 TDA_Cola* linkedQueue = new LinkedQueue();
 
+Alumno* alumno = NULL;
+Simbolo* simbolo = NULL;
+
 int main(int argc, char** argv) {
     mainFalso();
+    //limpiar memoria
     delete arrayList;
     delete linkedList;
     delete arrayStack;
@@ -287,7 +294,7 @@ int opcionesListas() {
 }
 
 void OpcionesArraylist() {
-    Alumno* alumno = NULL;
+
     int opc = 0, p;
     string nombre, cuenta;
     while (opc != 10) {
@@ -322,25 +329,29 @@ void OpcionesArraylist() {
             case 2:
             {// imprimir elementos
                 arrayList->imprime();
-
+                cout << endl;
                 break;
             }
 
             case 3:
             {// buscar elemento
                 string cuenta;
-                cout << "Ingrese # de cuenta: ";
-                cin>>cuenta;
-                alumno = new Alumno(cuenta);
-                int ubicacion = arrayList->localiza(alumno);
-                o[ubicacion] = arrayList->recupera(ubicacion);
-
-                if (ubicacion == -1) {
-                    cout << "No se encontró ningun elemento con esos datos." << endl;
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia." << endl;
+                    cout << endl;
                 } else {
-                    //1 cout << o[ubicacion]->toString() << endl;
-                    cout << "El numero de lista para: " << o[ubicacion]->toString() << " es: " << ubicacion << endl;
+                    cout << "Ingrese # de cuenta: ";
+                    cin>>cuenta;
+                    alumno = new Alumno(cuenta);
+                    int ubicacion = arrayList->localiza(alumno);
+                    Object* temp = arrayList->recupera(ubicacion);
+                    if (ubicacion == -1) {
+                        cout << "No se encontró ningun elemento con esos datos." << endl;
+                    } else {
+                        cout << "El numero de lista para: " << temp->toString() << " es: " << ubicacion << endl;
+                    }
                 }
+
                 cout << endl;
 
                 break;
@@ -349,16 +360,23 @@ void OpcionesArraylist() {
             case 4:
             {// borrar elemento
                 int p;
-                cout << "Ingrese posicion para eliminar: ";
-                cin>>p;
-                Object* val = arrayList->suprime(p);
-                if (val == NULL) {
-                    cout << "Posicion invalida.." << endl;
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia." << endl;
                     cout << endl;
                 } else {
-                    cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente." << endl;
-                    cout << endl;
+                    arrayList->imprime();
+                    cout << "Ingrese posicion para eliminar: ";
+                    cin>>p;
+                    Object* val = arrayList->suprime(p);
+                    if (val == NULL) {
+                        cout << "Error, la posicion ingresada es incorrecta." << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente." << endl;
+                        cout << endl;
+                    }
                 }
+
                 break;
             }
 
@@ -383,14 +401,24 @@ void OpcionesArraylist() {
 
             case 6:
             {// obtener elemento por posicion
+
                 int pp;
-                cout << "Ingrese un posicion ";
-                cin>>pp;
-                ///  alumno=arrayList->recupera(pp);
-                //o[pp]= new Alumno(nombre,cuenta);
-                o[pp] = arrayList->recupera(pp);
-                cout << "El alumno que se encuentra en esa posicion es: " << endl;
-                cout << o[pp]->toString() << endl;
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia" << endl;
+                    cout << endl;
+                } else {
+                    cout << "Ingrese un posicion: ";
+                    cin>>pp;
+                    Object* temp = arrayList->recupera(pp);
+                    if (temp == NULL) {
+                        cout << "No hay ningun alumno registrado en esa posicion." << endl;
+                    } else {
+                        cout << "El alumno que se encuentra en esa posicion es: " << endl;
+                        cout << temp->toString() << endl;
+                    }
+                }
+
+
                 cout << endl;
 
                 break;
@@ -399,55 +427,76 @@ void OpcionesArraylist() {
             case 7:
             {// obtener siguiente
                 int ps;
-                cout << "Ingrese una posicion: ";
-                cin>>ps;
-                if (arrayList->siguiente(ps) == NULL) {
-                    cout << "No hay un elemento siguiente" << endl;
-                } else {
-                    cout << "El alumno que se encuentra en esa posicion es: " << endl;
-                    cout << arrayList->siguiente(ps)->toString();
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia." << endl;
                     cout << endl;
+                } else {
+                    cout << "Ingrese una posicion: ";
+                    cin>>ps;
+                    if (arrayList->siguiente(ps) == NULL) {
+                        cout << "No hay un elemento siguiente" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El alumno que se encuentra en la posicion siguiente es: " << endl;
+                        cout << arrayList->siguiente(ps)->toString();
+                        cout << endl;
+                    }
                 }
+                cout << endl;
+
                 break;
             }
 
             case 8:
             { // obtener anterior
                 int ps;
-                cout << "Ingrese una posicion: ";
-                cin>>ps;
-                if (arrayList->anterior(ps) == NULL) {
-                    cout << "No hay un elemento anterior" << endl;
+                if (arrayList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia." << endl;
                     cout << endl;
                 } else {
-                    cout << "El alumno que se encuentra en esa posicion es: " << endl;
-                    cout << arrayList->anterior(ps)->toString();
+                    cout << "Ingrese una posicion: ";
+                    cin>>ps;
+                    if (arrayList->anterior(ps) == NULL) {
+                        cout << "No hay un elemento anterior" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El alumno que se encuentra en la posicion anterior es: " << endl;
+                        cout << arrayList->anterior(ps)->toString();
+                        cout << endl;
+                    }
                 }
-                // o[ps]=arrayList->anterior(ps)->toString();
+
                 cout << endl;
                 break;
             }
 
             case 9:
             {// borrar todos los elementos(anula)
-                char resp;
-                cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
-                cin>>resp;
-                if (resp == 's' || resp == 'S') {
-                    cout << "¿Estas seguro? [S/N]: ";
+                if (arrayList->vacia()) {
+                    cout << "En este momento la lista esta vacia" << endl;
+                    cout << endl;
+                } else {
+                    char resp;
+                    cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
                     cin>>resp;
                     if (resp == 's' || resp == 'S') {
-                        arrayList->anula();
-                        cout << "Los elementos han sido borrados exitosamente!" << endl;
-                        cout << endl;
+                        cout << "¿Estas seguro? [S/N]: ";
+                        cin>>resp;
+                        if (resp == 's' || resp == 'S') {
+                            arrayList->anula();
+                            cout << "Los elementos han sido borrados exitosamente!" << endl;
+                            cout << endl;
+                        } else {
+                            cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                            cout << endl;
+                        }
                     } else {
-                        cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                        cout << "Volviendo al menú..." << endl;
                         cout << endl;
                     }
-                } else {
-                    cout << "Volviendo al menu de listas..." << endl;
-                    cout << endl;
+
                 }
+
                 break;
             }
 
@@ -463,7 +512,6 @@ void OpcionesArraylist() {
 }
 
 void OpcionesLinkedlist() {
-    Alumno* alumno = NULL;
     string nombre, cuenta;
     int opc = 0, p;
     while (opc != 10) {
@@ -479,12 +527,17 @@ void OpcionesLinkedlist() {
                     cin>>nombre;
                     cout << "Ingrese # de cuenta: ";
                     cin>>cuenta;
+                    while (!cin) {
+                        cin.clear();
+                        cin.ignore(100, '\n');
+                        cout << "Por favor ingrese una entrada valida: ";
+                        cin >> nombre;
+                    }
                     alumno = new Alumno(nombre, cuenta);
                     bool valido = linkedList->inserta(p, alumno);
                     if (valido == true) {
                         cout << "Alumno " << nombre << " agregado con exito a la lista.\n" << endl;
                         int size = linkedList->getSize();
-                        //cout << size << "  cantidad de nodos" << endl;
                     } else {
                         cout << "Posicion incorrecta, lo posicion que ha ingresado esta fuera del limite de elementos en la lista" << endl;
                     }
@@ -504,18 +557,24 @@ void OpcionesLinkedlist() {
             case 3:
             {// buscar elemento
                 string cuenta;
-                cout << "Ingrese # de cuenta: ";
-                cin>>cuenta;
-                alumno = new Alumno(cuenta);
-                int ubicacion = linkedList->localiza(alumno);
-                o[ubicacion] = linkedList->recupera(ubicacion);
-
-                if (ubicacion == -1) {
-                    cout << "No se encontró ningun elemento con esos datos." << endl;
+                if (linkedList->vacia()) {
+                    cout << "En este momento la lista esta vacia." << endl;
+                    cout << endl;
                 } else {
-                    //1 cout << o[ubicacion]->toString() << endl;
-                    cout << "El numero de lista para: " << o[ubicacion]->toString() << " es: " << ubicacion << endl;
+                    cout << "Ingrese # de cuenta: ";
+                    cin>>cuenta;
+                    alumno = new Alumno(cuenta);
+
+                    int ubicacion = linkedList->localiza(alumno);
+                    Object* temp = linkedList->recupera(ubicacion);
+
+                    if (ubicacion == -1) {
+                        cout << "No se encontró ningun elemento con esos datos." << endl;
+                    } else {
+                        cout << "El numero de lista para: " << temp->toString() << " es: " << ubicacion << endl;
+                    }
                 }
+
                 cout << endl;
 
 
@@ -525,17 +584,25 @@ void OpcionesLinkedlist() {
             case 4:
             {// borrar elemento
                 int po;
-                cout << "Ingrese posicion para eliminar el nodo ";
-                cin>>po;
-                Object* val = linkedList->suprime(po);
-                if (val == NULL) {
-                    cout << "Error la posicion ingresada es incorrecta." << endl;
+
+                if (linkedList->vacia()) {
+                    cout << "En este momento la lista esta vacia." << endl;
                     cout << endl;
                 } else {
-                    cout << "El nodo ha sido eliminado" << endl;
-                    cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente" << endl;
-                    cout << endl;
+                    linkedList->imprime();
+                    cout << "Ingrese posicion para eliminar el nodo: ";
+                    cin>>po;
+                    Object* val = linkedList->suprime(po);
+                    if (val == NULL) {
+                        cout << "Error la posicion ingresada es incorrecta." << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El nodo ha sido eliminado" << endl;
+                        cout << "El elemento " << val->toString() << " ha sido eliminado exitosamente" << endl;
+                        cout << endl;
+                    }
                 }
+
 
                 break;
             }
@@ -557,14 +624,21 @@ void OpcionesLinkedlist() {
             case 6:
             {// obtener elemento por posicion
                 int p;
-                cout << "Ingrese posicion: ";
-                cin>>p;
-                Object* temp = linkedList->recupera(p);
-                if (temp == NULL) {
-                    cout << "Error" << endl;
+                if (linkedList->vacia()) {
+                    cout << "En este momento la lista esta vacia." << endl;
+                    cout << endl;
                 } else {
-                    cout << linkedList->recupera(p)->toString() << endl;
+                    cout << "Ingrese posicion: ";
+                    cin>>p;
+                    Object* temp = linkedList->recupera(p);
+                    if (temp == NULL) {
+                        cout << "Error, la posicion ingresada es incorrecta." << endl;
+                    } else {
+                        cout << linkedList->recupera(p)->toString() << endl;
+                        cout << endl;
+                    }
                 }
+
 
                 break;
             }
@@ -572,15 +646,21 @@ void OpcionesLinkedlist() {
             case 7:
             {// obtener siguiente
                 int p;
-                cout << "Ingrese una posicion: " << endl;
-                cin>>p;
-                if (linkedList->siguiente(p) == NULL) {
-                    cout << "No hay elemento siguiente" << endl;
+                if (linkedList->vacia()) {
+                    cout << "En este momento la lista esta vacia." << endl;
                     cout << endl;
                 } else {
-                    cout << "El nodo siguiente es: " << linkedList->siguiente(p)->toString() << endl;
-                    cout << endl;
+                    cout << "Ingrese una posicion: ";
+                    cin>>p;
+                    if (linkedList->siguiente(p) == NULL) {
+                        cout << "No hay elemento siguiente" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El nodo siguiente es: " << linkedList->siguiente(p)->toString() << endl;
+                        cout << endl;
+                    }
                 }
+
 
                 break;
             }
@@ -588,39 +668,51 @@ void OpcionesLinkedlist() {
             case 8:
             {// obtener anterior
                 int p;
-                cout << "Ingrese una posicion: " << endl;
-                cin>>p;
-                if (linkedList->anterior(p) == NULL) {
-                    cout << "No hay elemento anterior" << endl;
+                if (linkedList->vacia()) {
+                    cout << "En este momento la lista esta vacia." << endl;
                     cout << endl;
                 } else {
-                    cout << "El nodo anterior es: " << linkedList->anterior(p)->toString() << endl;
-                    cout << endl;
+                    cout << "Ingrese una posicion: ";
+                    cin>>p;
+                    if (linkedList->anterior(p) == NULL) {
+                        cout << "No hay elemento anterior" << endl;
+                        cout << endl;
+                    } else {
+                        cout << "El nodo anterior es: " << linkedList->anterior(p)->toString() << endl;
+                        cout << endl;
+                    }
                 }
+
 
                 break;
             }
 
             case 9:
             {// borrar todos los elementos(anula)
-                char resp;
-                cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
-                cin>>resp;
-                if (resp == 's' || resp == 'S') {
-                    cout << "¿Estas seguro? [S/N]: ";
+                if (linkedList->vacia()) {
+                    cout << "En estos momentos la lista esta vacia." << endl;
+                    cout << endl;
+                } else {
+                    char resp;
+                    cout << "¿Deseas eliminar todos el elementos de la lista?[S/N]: ";
                     cin>>resp;
                     if (resp == 's' || resp == 'S') {
-                        linkedList->anula();
-                        cout << "Los elementos han sido borrados exitosamente!" << endl;
-                        cout << endl;
+                        cout << "¿Estas seguro? [S/N]: ";
+                        cin>>resp;
+                        if (resp == 's' || resp == 'S') {
+                            linkedList->anula();
+                            cout << "Los elementos han sido borrados exitosamente!" << endl;
+                            cout << endl;
+                        } else {
+                            cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                            cout << endl;
+                        }
                     } else {
-                        cout << "Hubo un error al borrar los elementos de la lista." << endl;
+                        cout << "Volviendo al menu de listas..." << endl;
                         cout << endl;
                     }
-                } else {
-                    cout << "Volviendo al menu de listas..." << endl;
-                    cout << endl;
                 }
+
 
                 break;
             }
@@ -666,7 +758,7 @@ int opcionesPilas() {
 }
 
 void OpcionesArraystack() {
-    Simbolo* simbolo = NULL;
+
     char caracter;
     int opc = 0;
     while (opc != 6) {
@@ -675,6 +767,12 @@ void OpcionesArraystack() {
             {// empujar
                 cout << "Ingrese un simbolo: ";
                 cin>>caracter;
+                while (!cin) {
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    cout << "Por favor ingrese una entrada valida: ";
+                    cin >> caracter;
+                }
                 simbolo = new Simbolo(caracter);
                 arrayStack->push(simbolo);
                 cout << "Simbolo ha sido ingresado exitosamente." << endl;
@@ -685,14 +783,14 @@ void OpcionesArraystack() {
 
             case 2:
             {// sacar
-                //   if (arrayStack->pop() == NULL) {
-                // cout << "En estos momentos no hay elementos por desencolar" << endl;
-                //  cout << endl;
-                //    } else {
-                pilas[0] = arrayStack->pop();
-                cout << "Simbolo ha sido sacado exitosamente." << endl;
-                cout << endl;
-                //   }
+                if (arrayStack->isEmpty()) {
+                    cout << "En estos momentos no hay elementos en la pila." << endl;
+                    cout << endl;
+                } else {
+                    Object* val = arrayStack->pop();
+                    cout << "Simbolo" << val->toString() << " ha sido sacado exitosamente." << endl;
+                    cout << endl;
+                }
 
                 break;
             }
@@ -747,7 +845,7 @@ void OpcionesArraystack() {
 
 void OpcionesLinkedstack() {
     int opc = 0;
-    Simbolo* sim = NULL;
+
     char caracter;
     while (opc != 6) {
         switch (opc = opcionesPilas()) {
@@ -755,8 +853,8 @@ void OpcionesLinkedstack() {
             {// empujar
                 cout << "Ingrese un simbolo: ";
                 cin>>caracter;
-                sim = new Simbolo(caracter);
-                linkedStack->push(sim);
+                simbolo = new Simbolo(caracter);
+                linkedStack->push(simbolo);
                 cout << "Simbolo ha sido ingresado exitosamente." << endl;
                 cout << endl;
                 break;
@@ -764,11 +862,12 @@ void OpcionesLinkedstack() {
 
             case 2:
             {// sacar
-                Object* temp = linkedStack->pop();
-                if (temp == NULL) {
+
+                if (linkedStack->isEmpty()) {
                     cout << "En este momento la pila se encuentra vacia." << endl;
                 } else {
-                    cout << "El nodo ha sido sacado de la pila exitosamente." << endl;
+                    Object* temp = linkedStack->pop();
+                    cout << "El simbolo: " << temp->toString() << "ha sido sacado de la pila exitosamente." << endl;
                 }
                 cout << endl;
                 break;
@@ -850,7 +949,6 @@ int opcionesColas() {
 
 void OpcionesArrayQueue() {
     int opc = 0;
-    Alumno* alumno = NULL;
     string nombre, cuenta;
     while (opc != 6) {
         switch (opc = opcionesColas()) {
@@ -869,22 +967,27 @@ void OpcionesArrayQueue() {
 
             case 2:
             {// desencolar
-                //                if (arrayQueue->quitaDeCola() != NULL) {
-                //                    cout << "En estos momentos la cola esta vacia" << endl;
-                //                } else {
-                colas[0] = arrayQueue->quitaDeCola();
-                cout << "Elemento ha sido quitado de la cola exitosamente" << endl;
-                // }
+                if (arrayQueue->vacia()) {
+                    cout << "En estos momentos la cola esta vacia" << endl;
+                    cout << endl;
+                } else {
+                    Object* temp = arrayQueue->quitaDeCola();
+                    cout << "Elemento " << temp->toString() << " ha sido quitado de la cola exitosamente" << endl;
+                    cout << endl;
+                }
                 break;
             }
 
             case 3:
             {// ver tope
                 if (arrayQueue->frente() == NULL) {
-                    cout << "No hay elementos en la cola para mostrar el peek" << endl;
+                    cout << "En este momento la cola esta vacia." << endl;
+                    cout << endl;
                 } else {
+                    Object* temp = arrayQueue->frente();
                     colas[0] = arrayQueue->frente();
-                    cout << colas[0]->toString() << endl;
+                    cout << "El elemento al frente de la cola es: " << temp->toString() << endl;
+                    cout << endl;
                 }
 
 
@@ -895,7 +998,7 @@ void OpcionesArrayQueue() {
             {//verificar si esta vacia
                 bool vacio = arrayQueue->vacia();
                 if (vacio) {
-                    cout << "En estos momentos la cola esta vacia." << endl;
+                    cout << "En este momento la cola esta vacia." << endl;
                 } else {
                     cout << "Hay elementos en la cola" << endl;
                 }
@@ -926,7 +1029,6 @@ void OpcionesArrayQueue() {
 
 void OpcionesLinkedQueue() {
     int opc = 0;
-    Alumno* alumno = NULL;
     string nombre, cuenta;
     while (opc != 6) {
         switch (opc = opcionesColas()) {
@@ -946,11 +1048,13 @@ void OpcionesLinkedQueue() {
 
             case 2:
             {// desencolar
-                Object* temp = linkedQueue->quitaDeCola();
-                if (temp == NULL) {
+
+                if (linkedQueue->vacia()) {
                     cout << "En este momento la cola esta vacia." << endl;
+                    cout << endl;
                 } else {
-                    cout << "Elemento ha sido eliminado exitosamente." << endl;
+                    Object* temp = linkedQueue->quitaDeCola();
+                    cout << "Elemento: " << temp->toString() << " ha sido eliminado exitosamente." << endl;
                 }
                 cout << endl;
                 break;
@@ -958,11 +1062,14 @@ void OpcionesLinkedQueue() {
 
             case 3:
             {// ver tope
-                Object* temp = linkedQueue->frente();
-                if (temp == NULL) {
+
+                if (linkedQueue->vacia()) {
                     cout << "En este momento no hay elemento frente en la cola." << endl;
+                    cout<<endl;
                 } else {
+                    Object* temp = linkedQueue->frente();
                     cout << "El frente de la cola es: " << temp->toString() << endl;
+                    cout<<endl;
                 }
 
                 break;
@@ -982,7 +1089,7 @@ void OpcionesLinkedQueue() {
             case 5:
             {// imprimir elementos
                 linkedQueue->imprimir();
-                cout<<endl;
+                cout << endl;
                 break;
             }
 
@@ -998,11 +1105,3 @@ void OpcionesLinkedQueue() {
 
 }
 
-void validarEntrada(int leer) {
-    while (!cin) {
-        cin.clear();
-        cin.ignore(100, '\n');
-        cout << "Por favor escoja un numero valido " << endl;
-        cin >> leer;
-    }
-}

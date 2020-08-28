@@ -45,7 +45,7 @@ void ArrayStack::print() {
     } else {
         cout << "ELEMENTOS QUE CONTIENE LA PILA" << endl;
         for (int i = tope - 1; i >= 0; i--) {
-            cout << arrayPila[i]->toString();
+            cout <<i+1<<". "<< arrayPila[i]->toString();
         }
     }
 

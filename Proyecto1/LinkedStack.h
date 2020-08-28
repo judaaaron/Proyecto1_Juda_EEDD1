@@ -20,6 +20,7 @@ public:
     virtual ~LinkedStack();
 protected:
     Nodo* tope;
+    int n;
 
 };
 

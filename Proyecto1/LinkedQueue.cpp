@@ -4,6 +4,7 @@
 LinkedQueue::LinkedQueue() {
     this->inicio = NULL;
     this->fin = NULL;
+    n=0;
 }
 
 Object* LinkedQueue::frente() {
@@ -27,10 +28,12 @@ void LinkedQueue::poneEnCola(Object* x) {
     nuevo->setData(x);
     if (vacia()) {
         this->inicio = this->fin = nuevo;
+        n++;
     } else {
         fin->setSiguiente(nuevo);
         nuevo->setAnterior(fin);
         fin = nuevo;
+        n++;
     }
 
 }
@@ -40,7 +43,7 @@ Object * LinkedQueue::quitaDeCola() {
     actual = inicio;
     Nodo* anterior = new Nodo();
     anterior = NULL;
- 
+
     if (inicio != NULL) {
         if (actual == inicio) {
             inicio = inicio ->getSiguiente();
@@ -51,7 +54,7 @@ Object * LinkedQueue::quitaDeCola() {
 
             anterior->setSiguiente(actual->getSiguiente());
         }
-        
+
         anterior = actual;
         actual = actual->getSiguiente();
 
@@ -81,9 +84,12 @@ void LinkedQueue::imprimir() {
     Nodo* actual = new Nodo();
     actual = inicio;
     if (!vacia()) {
+        int cont =1;
+        cout<<"ELEMENTOS DE LA COLA."<<endl;
         while (actual != NULL) {
-            cout << actual->getData()->toString() << endl;
+            cout <<cont<<". "<<actual->getData()->toString() << endl;
             actual = actual->getSiguiente();
+            cont++;
         }
     } else {
         cout << "En este momento la cola esta vacia. " << endl;

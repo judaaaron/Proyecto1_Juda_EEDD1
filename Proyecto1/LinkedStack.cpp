@@ -4,6 +4,7 @@
 
 LinkedStack::LinkedStack() {
     this->tope = NULL;
+    n=0;
 }
 
 void LinkedStack::push(Object* x) {
@@ -12,6 +13,7 @@ void LinkedStack::push(Object* x) {
     newNodo->setSiguiente(tope);
    // tope->setAnterior(newNodo);
     tope = newNodo;
+    n++;
 
 }
 
@@ -27,6 +29,7 @@ Object* LinkedStack::pop() {
         retval = temp->getData();
         temp->setData(NULL);
         delete temp;
+        n--;
         return retval;
     }
 
@@ -50,10 +53,12 @@ void LinkedStack::print() {
         cout << endl;
     } else {
         Nodo* temp = this->tope;
+        int cont=getSize();
         cout << "ELEMENTOS DENTRO DE LA PILA." << endl;
         while (temp != NULL) {
-            cout << temp->getData()->toString();
+            cout <<cont<<". "<< temp->getData()->toString();
             temp = temp->getSiguiente();
+            cont--;
         }
 
     }
@@ -64,7 +69,7 @@ void LinkedStack::clear() {
 }
 
 int LinkedStack::getSize() {
-    return 0;
+    return n;
 }
 
 LinkedStack::~LinkedStack() {

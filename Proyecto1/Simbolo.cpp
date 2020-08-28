@@ -19,7 +19,7 @@ void Simbolo::setChar(char st) {
 
 string Simbolo::toString() {
     stringstream ss;
-    ss << "         -> " << "|"<<this->symbol<<"|"<<endl;
+    ss << " -> " << "|"<<this->symbol<<"|"<<endl;
     return ss.str();
 }
 

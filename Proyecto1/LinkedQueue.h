@@ -1,5 +1,3 @@
-
-
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 #include "TDA_Cola.h"
@@ -20,6 +18,7 @@ public:
 protected:
     Nodo* inicio;
     Nodo* fin;
+    int n;
 
 };
 

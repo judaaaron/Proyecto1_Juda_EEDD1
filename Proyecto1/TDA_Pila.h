@@ -17,7 +17,6 @@ public:
     virtual void print()=0;
     virtual void clear()=0;
     virtual int getSize()=0;
-    
     virtual ~TDA_Pila();
 private:
 

@@ -5,7 +5,8 @@
 ArrayQueue::ArrayQueue() {
     capacity = 10000;
     arrayCola = new Object*[capacity];
-    front = fin = 0;
+    front =0;
+    fin = 0;
 }
 
 Object* ArrayQueue::frente() {
@@ -50,7 +51,6 @@ Object* ArrayQueue::quitaDeCola() {
     if (!vacia()) {
         Object* retval = this->arrayCola[this->front];
         this->front++;
-        // this->auxiliar--;
         return retval;
     } else {
         return NULL;
@@ -81,9 +81,11 @@ void ArrayQueue::imprimir() {
     //iterar las casillas desde frente hasta final e imprimir en pantalla 
     //cada elemento
     if (!vacia()) {
-        cout << fin << endl;
+        int cont=1;
+        cout<<"ELEMENTOS EN LA COLA"<<endl;
         for (int i = front; i < fin; i++) {
-            cout << " -> " << this->arrayCola[i]->toString() << endl;
+            cout <<cont<<". "<< this->arrayCola[i]->toString() << endl;
+            cont++;
         }
     } else {
         cout << "En este momento no hay elementos en la cola." << endl;
@@ -91,6 +93,8 @@ void ArrayQueue::imprimir() {
 
     cout << endl;
 }
+
+
 
 ArrayQueue::~ArrayQueue() {
     anula();

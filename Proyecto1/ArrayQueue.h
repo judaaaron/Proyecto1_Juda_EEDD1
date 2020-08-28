@@ -18,6 +18,7 @@ public:
 protected:
     Object** arrayCola;
     int capacity, front, fin, auxiliar;
+    int n;
 
 };
 

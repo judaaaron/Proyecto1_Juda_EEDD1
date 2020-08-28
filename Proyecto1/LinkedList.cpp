@@ -136,12 +136,14 @@ void LinkedList::imprime() {
     if (vacia()) {
         cout << "En estos momentos la lista enlazada esta vacia" << endl;
     } else {
+        int cont=1;
         cout << "ELEMENTOS DE LA LISTA" << endl;
         Nodo* actual = new Nodo();
         actual = this->inicioLista;
         while (actual != NULL) {
-            cout << actual->getData()->toString() << endl;
+            cout <<cont<<". "<< actual->getData()->toString() << endl;
             actual = actual->getSiguiente();
+            cont++;
         }
     }
     cout << endl;
