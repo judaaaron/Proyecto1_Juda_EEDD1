@@ -43,11 +43,6 @@ void OpcionesLinkedQueue();
 
 void validarEntrada(int);
 
-// arreglos globales de tipo Object
-Object* o [10000];
-Object* pilas[10000];
-Object* colas[10000];
-
 // instancia de las diferentes clases
 TDA_Lista* arrayList = new ArrayList();
 TDA_Lista* linkedList = new LinkedList();
@@ -802,9 +797,9 @@ void OpcionesArraystack() {
                     cout << endl;
                 } else {
                     int topi = arrayStack->getSize();
+                    Object* temp = arrayStack->top();
                     cout << "El tope de la pila es: " << endl;
-                    pilas[topi] = arrayStack->top();
-                    cout << pilas[topi]->toString();
+                    cout << temp->toString();
                     cout << endl;
                 }
 
@@ -985,7 +980,7 @@ void OpcionesArrayQueue() {
                     cout << endl;
                 } else {
                     Object* temp = arrayQueue->frente();
-                    colas[0] = arrayQueue->frente();
+                    //colas[0] = arrayQueue->frente();
                     cout << "El elemento al frente de la cola es: " << temp->toString() << endl;
                     cout << endl;
                 }
@@ -1104,4 +1099,3 @@ void OpcionesLinkedQueue() {
     }
 
 }
-

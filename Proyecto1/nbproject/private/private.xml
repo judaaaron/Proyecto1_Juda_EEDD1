@@ -8,11 +8,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/main.cpp</file>
-            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/ArrayList.cpp</file>
-            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/Alumno.cpp</file>
-            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/Simbolo.cpp</file>
-            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/ArrayQueue.cpp</file>
-            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/ArrayStack.cpp</file>
+            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/LinkedQueue.cpp</file>
+            <file>file:/C:/Users/Admin/Documents/C++/Proyecto1_Juda_EEDD1/Proyecto1/LinkedQueue.h</file>
         </group>
     </open-files>
 </project-private>

@@ -43,6 +43,7 @@ Object * LinkedQueue::quitaDeCola() {
     actual = inicio;
     Nodo* anterior = new Nodo();
     anterior = NULL;
+    Object* temp = inicio->getData();
 
     if (inicio != NULL) {
         if (actual == inicio) {
@@ -57,6 +58,7 @@ Object * LinkedQueue::quitaDeCola() {
 
         anterior = actual;
         actual = actual->getSiguiente();
+        return temp;
 
     } else {
         return NULL;
@@ -97,5 +99,7 @@ void LinkedQueue::imprimir() {
 }
 
 LinkedQueue::~LinkedQueue() {
+    if(fin)
+        delete final;
 }
 
