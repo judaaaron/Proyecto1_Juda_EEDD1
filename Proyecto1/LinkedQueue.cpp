@@ -100,6 +100,6 @@ void LinkedQueue::imprimir() {
 
 LinkedQueue::~LinkedQueue() {
     if(fin)
-        delete final;
+        delete fin;
 }
 

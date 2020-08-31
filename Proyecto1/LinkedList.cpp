@@ -19,6 +19,27 @@ bool LinkedList::inserta(int p, Object* x) {
             this->finLista = this->inicioLista;
             n++;
             return true;
+        } else if (p <= n && p >= 1) {
+            int hops = p - 1;
+            Nodo* temp = inicioLista;
+
+            for (int i = 1; i <= hops; i++) {
+                temp = temp->getSiguiente();
+            }
+            if(temp!=inicioLista){
+                nuevo->setAnterior(temp->getAnterior());
+                //Evelin, Juda, Ingeniero
+                temp->getAnterior()->setSiguiente(nuevo);
+            }
+            nuevo->setSiguiente(temp);
+            temp->setAnterior(nuevo);
+            
+            if(temp==inicioLista){
+                inicioLista=nuevo;
+            }
+            
+            n++;
+            return true;
         } else {
             this->finLista->setSiguiente(nuevo);
             nuevo->setSiguiente(NULL);
@@ -37,7 +58,7 @@ bool LinkedList::inserta(int p, Object* x) {
 Object* LinkedList::suprime(int pos) {
 
     if (pos >= 1 && pos <= n) {
-        //validar si sÃ³lo hay un elemento
+        //validar si solo hay un elemento
         if (n == 1) {
             Nodo* temp = this->inicioLista;
             Object* tempData = temp->getData();
@@ -136,12 +157,12 @@ void LinkedList::imprime() {
     if (vacia()) {
         cout << "En estos momentos la lista enlazada esta vacia" << endl;
     } else {
-        int cont=1;
+        int cont = 1;
         cout << "ELEMENTOS DE LA LISTA" << endl;
         Nodo* actual = new Nodo();
         actual = this->inicioLista;
         while (actual != NULL) {
-            cout <<cont<<". "<< actual->getData()->toString() << endl;
+            cout << cont << ". " << actual->getData()->toString() << endl;
             actual = actual->getSiguiente();
             cont++;
         }

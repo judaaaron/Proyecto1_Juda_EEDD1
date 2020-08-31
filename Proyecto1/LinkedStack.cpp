@@ -24,7 +24,6 @@ Object* LinkedStack::pop() {
         Nodo* temp = this->tope;
         Object* retval = NULL;
         this->tope = tope->getSiguiente();
-        tope->setAnterior(NULL);
         temp->setSiguiente(NULL);
         retval = temp->getData();
         temp->setData(NULL);
